@@ -23,3 +23,5 @@ Hardware Considerations:
 
 
 
+Extensions:
+- Different fonts and text colours
