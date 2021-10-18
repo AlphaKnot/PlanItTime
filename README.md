@@ -1,8 +1,5 @@
 # Plan It Time
 
-Motivation:
-
-![motivation](motivation.png)
 
 - Solar system display as main screen
     - Current date
