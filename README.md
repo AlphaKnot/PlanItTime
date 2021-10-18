@@ -10,10 +10,6 @@ Motivation:
     - current position of planets
     - black background
     - kind-of retro bit style
-    - we could put quotes here about being late :pepelaugh:
-- Secondary screen google maps API
-    - Travel time from current location to other location (select from bus, car, bike)
-    - Shortest route from current location to other location
 
 
 Hardware Considerations:
