@@ -4,12 +4,12 @@
 class OrbitalElements{
     public:
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon);
-        ~OrbitalElements();
         void printOrbitalElements(std::string planetName);
 
     private:
 
         void computeCoordinates();
+        double computeEccentricAnomaly(int itr);
         double radians(double x);
         double degrees(double x);
         double rev(double);
