@@ -18,15 +18,20 @@ void Planets::updatePlanets(int year, int month, int day, int hour, int minute){
 }
 void Planets::computePositions(double day){
     OrbitalElements mercuryOE = computeMercuryOE(day);
-    /**
     OrbitalElements venusOE = computeVenusOE(day);
     OrbitalElements marsOE = computeMarsOE(day);
     OrbitalElements jupiterOE = computeJupiterOE(day);
     OrbitalElements saturnOE = computeSaturnOE(day);
     OrbitalElements uranusOE = computeUranusOE(day);
     OrbitalElements neptuneOE = computeNeptuneOE(day);
-    */
+    
     mercuryOE.printOrbitalElements("Mercury");
+    venusOE.printOrbitalElements("Venus");
+    marsOE.printOrbitalElements("Mars");
+    jupiterOE.printOrbitalElements("Jupiter");
+    saturnOE.printOrbitalElements("Saturn");
+    uranusOE.printOrbitalElements("Uranus");
+    neptuneOE.printOrbitalElements("Neptune");
 
 
 }
