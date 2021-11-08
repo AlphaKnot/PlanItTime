@@ -8,10 +8,6 @@ Planets::Planets(int day){
     computePositions(day);
 
 }
-void Planets::updatePlanets(int day){
-    computePositions(day);
-
-}
 void Planets::computePositions(double day){
 
     OrbitalElements mercuryOE = computeMercuryOE(day);
