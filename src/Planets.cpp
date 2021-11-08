@@ -3,17 +3,17 @@
 #include<iostream>
 #include<string>
 
-Planets::Planets(int year, int month, int day, int hour, int minute){
-    day = computeCurrentDay(year,month,day,hour,minute);
+// const vector<int> JupiterValues = {}
+Planets::Planets(int day){
     computePositions(day);
 
 }
-void Planets::updatePlanets(int year, int month, int day, int hour, int minute){
-    day = computeCurrentDay(year,month,day,hour,minute);
+void Planets::updatePlanets(int day){
     computePositions(day);
 
 }
 void Planets::computePositions(double day){
+
     OrbitalElements mercuryOE = computeMercuryOE(day);
     OrbitalElements venusOE = computeVenusOE(day);
     OrbitalElements marsOE = computeMarsOE(day);
@@ -21,7 +21,8 @@ void Planets::computePositions(double day){
     OrbitalElements saturnOE = computeSaturnOE(day);
     OrbitalElements uranusOE = computeUranusOE(day);
     OrbitalElements neptuneOE = computeNeptuneOE(day);
-    
+
+
     mercuryOE.printOrbitalElements("Mercury");
     venusOE.printOrbitalElements("Venus");
     marsOE.printOrbitalElements("Mars");
@@ -106,12 +107,3 @@ OrbitalElements Planets::computeNeptuneOE(double day){
 
     return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 }
-double Planets::computeCurrentDay (int year, int month, int day, int hour, int minute){
-    return 367*year - 7 * ( year + (month+9)/12 ) / 4 - 3 * ( (year + (month-9)/7 ) / 100 + 1 ) / 4 + 275*month/9 + day - 730515;
-}
-int main(int argc, char const *argv[]){
-    Planets p = Planets(1990,4,19,0,0);
-    
-    return 0;
-}
-
