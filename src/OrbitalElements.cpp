@@ -26,36 +26,40 @@ void OrbitalElements::computeCoordinates(){
 
 
 
-    std::cout << "Eccentric Anom: " << eccentric_anomaly_1 << "\n"; 
+    eccentric_anomaly_1 = rev(eccentric_anomaly_1);
+
+    //std::cout << "Eccentric Anom: " << eccentric_anomaly_1 << "\n"; 
 
     double rect_x = m_axis*(cos(radians(eccentric_anomaly_1))-m_eccen);
     double rect_y = m_axis*sqrt(1-m_eccen*m_eccen)*sin(radians(eccentric_anomaly_1));
 
 
 
-    std::cout << "Rect x: "<< rect_x << "\n";
-    std::cout << "Rect y: "<< rect_y << "\n";
+    //std::cout << "Rect x: "<< rect_x << "\n";
+    //std::cout << "Rect y: "<< rect_y << "\n";
 
     double radius = sqrt(pow(rect_x,2)+pow(rect_y,2));
     double true_anomaly = atan2(radians(rect_y),radians(rect_x));
 
     true_anomaly = degrees(true_anomaly);
+    true_anomaly = rev(true_anomaly);
     
 
-    std::cout << "Radius:" << radius << "\n" << "V: " << true_anomaly << "\n";
+    //std::cout << "Radius:" << radius << "\n" << "V: " << true_anomaly << "\n";
 
     double clip_x = radius * (cos(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))-sin(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
     double clip_y = radius * (sin(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))+cos(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
     double clip_z = radius * sin(radians(true_anomaly+m_arg))*sin(radians(m_incl));
 
-    std::cout << "x: " << clip_x << " y: " << clip_y << " z: " << clip_z << "\n";
+    //std::cout << "x: " << clip_x << " y: " << clip_y << " z: " << clip_z << "\n";
 
 
     // our actual return values?
     m_long = atan2(radians(clip_y),radians(clip_x));
     m_long = degrees(m_long);
+    m_long = rev(m_long);
     m_lat = atan2(radians(clip_z),radians(sqrt(pow(clip_x,2) + pow(clip_y,2))));
-    m_lat = rev(degrees(m_lat));
+    m_lat = degrees(m_lat);
     m_radius = sqrt(pow(clip_x,2)+pow(clip_y,2)+pow(clip_z,2));
 
         
