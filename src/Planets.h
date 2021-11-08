@@ -11,14 +11,15 @@ class Planets{
 
     private:
         std::vector<unsigned short> planetStates;
-        OrbitalElements computeMoonData(double);
-        OrbitalElements computeMercuryData(double);
-        OrbitalElements computeVenusData(double);
-        OrbitalElements computeMarsData(double);
-        OrbitalElements computeJupiterData(double);
-        OrbitalElements computeSaturnData(double);
-        OrbitalElements computeUranusData(double);
-        OrbitalElements computeNeptuneData(double);
+        double rev(double);
+        OrbitalElements computeMoonOE(double);
+        OrbitalElements computeMercuryOE(double);
+        OrbitalElements computeVenusOE(double);
+        OrbitalElements computeMarsOE(double);
+        OrbitalElements computeJupiterOE(double);
+        OrbitalElements computeSaturnOE(double);
+        OrbitalElements computeUranusOE(double);
+        OrbitalElements computeNeptuneOE(double);
 
 };
 
