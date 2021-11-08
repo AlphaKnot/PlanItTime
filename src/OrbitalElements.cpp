@@ -32,19 +32,19 @@ void OrbitalElements::computeCoordinates(){
     true_anomaly = degrees(true_anomaly);
     true_anomaly = rev(true_anomaly);
     
-    double clip_x = radius * (cos(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))-sin(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
-    double clip_y = radius * (sin(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))+cos(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
-    double clip_z = radius * sin(radians(true_anomaly+m_arg))*sin(radians(m_incl));
+    m_clip_x = radius * (cos(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))-sin(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
+    m_clip_y = radius * (sin(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))+cos(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
+    m_clip_z = radius * sin(radians(true_anomaly+m_arg))*sin(radians(m_incl));
 
 
-    m_long = atan2(radians(clip_y),radians(clip_x));
+    m_long = atan2(radians(m_clip_y),radians(m_clip_x));
 
     m_long = degrees(m_long);
     m_long = rev(m_long);
     
-    m_lat = atan2(radians(clip_z),radians(sqrt(pow(clip_x,2) + pow(clip_y,2))));
+    m_lat = atan2(radians(m_clip_z),radians(sqrt(pow(m_clip_x,2) + pow(m_clip_y,2))));
     m_lat = degrees(m_lat);
-    m_radius = sqrt(pow(clip_x,2)+pow(clip_y,2)+pow(clip_z,2));
+    m_radius = sqrt(pow(m_clip_x,2)+pow(m_clip_y,2)+pow(m_clip_z,2));
 
         
 }
@@ -61,6 +61,24 @@ double OrbitalElements::computeEccentricAnomaly(int itr){
         count++;
     }
     return current;
+}
+double OrbitalElements::getLong(){
+    return m_long;
+}
+double OrbitalElements::getLat(){
+    return m_lat;
+}
+double OrbitalElements::getRad(){
+    return m_radius;
+}
+double OrbitalElements::getClipX(){
+    return m_clip_x;
+}
+double OrbitalElements::getClipY(){
+    return m_clip_y;
+}
+double OrbitalElements::getClipZ(){
+    return m_clip_z;
 }
 // for testing
 void OrbitalElements::printOrbitalElements(std::string planetName){
