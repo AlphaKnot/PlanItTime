@@ -1,10 +1,11 @@
 #ifndef ORBITALELEMENTS_H
 #define ORBITALELEMENTS_H
-
+#include<string>
 class OrbitalElements{
     public:
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon);
         ~OrbitalElements();
+        void printOrbitalElements(std::string planetName);
         double getAscNode();
         double getIncl();
         double getArg();

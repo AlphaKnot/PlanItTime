@@ -1,6 +1,7 @@
 #include"Planets.h"
 #include<math.h>
 #include<iostream>
+#include<string>
 // a planet moves a certain number of degrees in a certain ammount of time
 // obviously a planet closer to the sun will move more in a given time than a planet further away
 // so it's really just a list of values with a transition function
@@ -24,68 +25,14 @@ void Planets::computePositions(double day){
     OrbitalElements uranusOE = computeUranusOE(day);
     OrbitalElements neptuneOE = computeNeptuneOE(day);
 
-    std::cout << "Mercury: " <<
-        mercuryOE.getAscNode() << " " <<
-        mercuryOE.getIncl() << " " <<
-        mercuryOE.getArg() << " " <<
-        mercuryOE.getAxis() << " " <<
-        mercuryOE.getEccen() << " " <<
-        mercuryOE.getMeanAnon() << 
-        "\n";
-    
-    std::cout <<  "Venus: " <<
-        venusOE.getAscNode() << " " <<
-        venusOE.getIncl() << " " <<
-        venusOE.getArg() << " " <<
-        venusOE.getAxis() << " " <<
-        venusOE.getEccen() << " " <<
-        venusOE.getMeanAnon() << 
-        "\n";
+    mercuryOE.printOrbitalElements("Mercury");
+    venusOE.printOrbitalElements("Venus");
+    marsOE.printOrbitalElements("Mars");
+    jupiterOE.printOrbitalElements("Jupiter");
+    saturnOE.printOrbitalElements("Saturn");
+    uranusOE.printOrbitalElements("Uranus");
+    neptuneOE.printOrbitalElements("Neptune");
 
-    std::cout << "Mars: " <<
-        marsOE.getAscNode() << " " <<
-        marsOE.getIncl() << " " <<
-        marsOE.getArg() << " " <<
-        marsOE.getAxis() << " " <<
-        marsOE.getEccen() << " " <<
-        marsOE.getMeanAnon() << 
-        "\n";
-    
-    std::cout << "Jupiter: " <<
-        jupiterOE.getAscNode() << " " <<
-        jupiterOE.getIncl() << " " <<
-        jupiterOE.getArg() << " " <<
-        jupiterOE.getAxis() << " " <<
-        jupiterOE.getEccen() << " " <<
-        jupiterOE.getMeanAnon() << 
-        "\n";
-
-    std::cout <<  "Saturn: " <<
-        saturnOE.getAscNode() << " " <<
-        saturnOE.getIncl() << " " <<
-        saturnOE.getArg() << " " <<
-        saturnOE.getAxis() << " " <<
-        saturnOE.getEccen() << " " <<
-        saturnOE.getMeanAnon() << 
-        "\n";
-
-    std::cout << "Uranus: " <<
-        uranusOE.getAscNode() << " " <<
-        uranusOE.getIncl() << " " <<
-        uranusOE.getArg() << " " <<
-        uranusOE.getAxis() << " " <<
-        uranusOE.getEccen() << " " <<
-        uranusOE.getMeanAnon() << 
-        "\n";
-    
-    std::cout << "Neptune: " <<
-        neptuneOE.getAscNode() << " " <<
-        neptuneOE.getIncl() << " " <<
-        neptuneOE.getArg() << " " <<
-        neptuneOE.getAxis() << " " <<
-        neptuneOE.getEccen() << " " <<
-        neptuneOE.getMeanAnon() << 
-        "\n";
 }
 /**
  * @brief 

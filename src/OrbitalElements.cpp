@@ -1,4 +1,5 @@
 #include"OrbitalElements.h"
+#include<iostream>
 
 OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon){
     m_asc_node = asc_node;
@@ -28,4 +29,15 @@ double OrbitalElements::getEccen(){
 }
 double OrbitalElements::getMeanAnon(){
     return m_mean_anon;
+}
+// for testing
+void OrbitalElements::printOrbitalElements(std::string planetName){
+    std::cout << planetName << ": " <<
+        getAscNode() << " " <<
+        getIncl() << " " <<
+        getArg() << " " <<
+        getAxis() << " " <<
+        getEccen() << " " <<
+        getMeanAnon() << 
+        "\n";
 }
