@@ -50,13 +50,8 @@ using namespace std;
                                        
 
 SolarSystem::SolarSystem(int year,int month,int day,int hour,int minute){
-    m_year = year;
-    m_month = month;
-    m_day = day;
-    m_hour = hour;
-    m_minute = minute;
-}
-void SolarSystem::computeTimeScale(){
-    time_scale = 367*m_year - 7 * ( m_year + (m_month+9)/12 ) / 4 - 3 * ( (m_year + (m_month-9)/7 ) / 100 + 1 ) / 4 + 275*m_month/9 + m_day - 730515;
-}
 
+}
+void SolarSystem::computeTimeScale(int year, int month, int day, int hour, int minute){
+    time_scale = 367*year - 7 * ( year + (month+9)/12 ) / 4 - 3 * ( (year + (month-9)/7 ) / 100 + 1 ) / 4 + 275*month/9 + day - 730515;
+}
