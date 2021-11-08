@@ -4,11 +4,18 @@
 #include"Planets.h"
 class SolarSystem{
     public:
-        SolarSystem(int year,int month,int day,int hour,int minute);
+        SolarSystem(int m_year,int m_month,int m_day,int m_hour,int m_minute);
         void updateSystem(int year,int month,int day,int hour,int minute);
+
     private:
+        int m_year;
+        int m_month;
+        int m_day;
+        int m_hour;
+        int m_minute;
+        int time_scale;
         Planets planets;
-        unsigned short planetStates[];
+        void computeTimeScale(void);
 };
 
 

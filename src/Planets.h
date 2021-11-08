@@ -5,11 +5,10 @@ class Planets{
     public:
         Planets();
         ~Planets();
-        std::vector<double> getPlanets(void);
-        void setPlanet(double value);
+        std::vector<unsigned short> getPlanets(void);
 
     private:
-        std::vector<double> planets;
+        std::vector<unsigned short> planetStates;
 };
 
 
