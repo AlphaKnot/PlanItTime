@@ -1,5 +1,6 @@
 #include"SolarSystem.h"
 #include"Planets.h"
+#include<iostream>
 
 using namespace std;
 SolarSystem::SolarSystem(int year, int month, int day, int hour, int minute){
@@ -19,6 +20,8 @@ double SolarSystem::computeCurrentDay (int year, int month, int day, int hour, i
 }
 int main(int argc, char const *argv[]){
     SolarSystem s = SolarSystem(1990,4,19,0,0);
+    std::cout << "\n";
+    s.updateSystem(1990,5,20,0,0);
     return 0;
 }
 
