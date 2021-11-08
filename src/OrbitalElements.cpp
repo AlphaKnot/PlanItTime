@@ -3,7 +3,9 @@
 #include<math.h>
 
 const double PI = 3.14159265359;
+
 OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon){
+    
     m_asc_node = rev(asc_node);
     m_incl = rev(incl);
     m_arg = rev(arg);
@@ -75,5 +77,5 @@ double OrbitalElements::radians(double x){
     return x*PI/180;
 }
 double OrbitalElements::degrees(double x){
-    return x * 180/PI;
+    return x*180/PI;
 }

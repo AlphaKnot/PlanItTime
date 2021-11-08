@@ -4,15 +4,15 @@
 #include"OrbitalElements.h"
 class Planets{
     public:
-        Planets(int year, int month, int day, int hour, int minute);
-        void updatePlanets(int year, int month, int day, int hour, int minute);
+        Planets(int day);
+        Planets();
+        void updatePlanets(int day);
         std::vector<unsigned short> getPlanets(void);
 
     private:
         double time_scale;
         std::vector<unsigned short> planetStates;
         void computePositions(double);
-        double computeCurrentDay(int year, int month, int day, int hour, int minute);
         OrbitalElements computeMoonOE(double);
         OrbitalElements computeMercuryOE(double);
         OrbitalElements computeVenusOE(double);

@@ -4,13 +4,13 @@
 #include"Planets.h"
 class SolarSystem{
     public:
-        SolarSystem(int m_year,int m_month,int m_day,int m_hour,int m_minute);
+        SolarSystem(int year,int month,int day,int hour,int minute);
         void updateSystem(int year,int month,int day,int hour,int minute);
 
     private:
         Planets planets;
         double time_scale;
-        void computeTimeScale(int year, int month, int day, int hour, int minute);
+        double computeCurrentDay(int year, int month, int day, int hour, int minute);
 };
 
 
