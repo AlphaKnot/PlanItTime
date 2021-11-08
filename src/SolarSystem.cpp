@@ -48,10 +48,3 @@ using namespace std;
 // r * cos(v) = a * (cos(E) - e)
 // r * sin(v) = a * sqrt(1-e*e) * sin(E)
                                        
-
-SolarSystem::SolarSystem(int year,int month,int day,int hour,int minute){
-
-}
-void SolarSystem::computeTimeScale(int year, int month, int day, int hour, int minute){
-    time_scale = 367*year - 7 * ( year + (month+9)/12 ) / 4 - 3 * ( (year + (month-9)/7 ) / 100 + 1 ) / 4 + 275*month/9 + day - 730515;
-}
