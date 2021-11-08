@@ -11,7 +11,6 @@ class Planets{
     private:
         double time_scale;
         std::vector<unsigned short> planetStates;
-        double rev(double);
         void computePositions(double);
         double computeCurrentDay(int year, int month, int day, int hour, int minute);
         OrbitalElements computeMoonOE(double);
