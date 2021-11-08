@@ -6,7 +6,7 @@ class Planets{
     public:
         Planets(int day);
         ~Planets();
-        std::vector<OrbitalElements> getPlanets();
+        std::vector<OrbitalElements*> getPlanets();
 
     private:
         void computePositions(double);
