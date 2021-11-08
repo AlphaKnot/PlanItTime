@@ -52,7 +52,7 @@ void OrbitalElements::computeCoordinates(){
 
 
     // our actual return values?
-    m_long = atan2(radians(clip_y),radians(clip_y));
+    m_long = atan2(radians(clip_y),radians(clip_x));
     m_long = degrees(m_long);
     m_lat = atan2(radians(clip_z),radians(sqrt(pow(clip_x,2) + pow(clip_y,2))));
     m_lat = rev(degrees(m_lat));
