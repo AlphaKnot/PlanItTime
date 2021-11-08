@@ -8,6 +8,7 @@ Planets::Planets(int day){
 
 }
 Planets::~Planets(){
+    
     delete mercuryOE;
     delete venusOE;
     delete marsOE;
@@ -16,9 +17,9 @@ Planets::~Planets(){
     delete uranusOE;
     delete neptuneOE;
 
-    for (int i = 0; i < planets.size(); i++){
-        std::cout << planets.at(i)->getRad() << "\n";
-    }  
+}
+std::vector<OrbitalElements*> Planets::getPlanets(){
+    return planets;
 }
 void Planets::computePositions(double day){
 
@@ -46,12 +47,6 @@ void Planets::computePositions(double day){
     planets.push_back(saturnOE);
     planets.push_back(uranusOE);
     planets.push_back(neptuneOE);
-
-    for (int i = 0; i < planets.size(); i++){
-        std::cout << planets.at(i)->getRad() << "\n";
-    }  
-
-
 
 }
 void Planets::jupiterPertubations(){
