@@ -6,13 +6,17 @@ class OrbitalElements{
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon);
         ~OrbitalElements();
         void printOrbitalElements(std::string planetName);
-        double getAscNode();
-        double getIncl();
-        double getArg();
-        double getAxis();
-        double getEccen();
-        double getMeanAnon();
+
     private:
+
+        void computeCoordinates();
+        double radians(double x);
+        double degrees(double x);
+        double rev(double);
+        double m_long;
+        double m_lat;
+        double m_radius;
+        
         double m_asc_node;
         double m_incl;
         double m_arg;

@@ -18,20 +18,16 @@ void Planets::updatePlanets(int year, int month, int day, int hour, int minute){
 }
 void Planets::computePositions(double day){
     OrbitalElements mercuryOE = computeMercuryOE(day);
+    /**
     OrbitalElements venusOE = computeVenusOE(day);
     OrbitalElements marsOE = computeMarsOE(day);
     OrbitalElements jupiterOE = computeJupiterOE(day);
     OrbitalElements saturnOE = computeSaturnOE(day);
     OrbitalElements uranusOE = computeUranusOE(day);
     OrbitalElements neptuneOE = computeNeptuneOE(day);
-
+    */
     mercuryOE.printOrbitalElements("Mercury");
-    venusOE.printOrbitalElements("Venus");
-    marsOE.printOrbitalElements("Mars");
-    jupiterOE.printOrbitalElements("Jupiter");
-    saturnOE.printOrbitalElements("Saturn");
-    uranusOE.printOrbitalElements("Uranus");
-    neptuneOE.printOrbitalElements("Neptune");
+
 
 }
 OrbitalElements Planets::computeMercuryOE(double day){
@@ -42,7 +38,7 @@ OrbitalElements Planets::computeMercuryOE(double day){
     double eccen = 0.205635 + (5.59E-10*day);
     double mean_anon = 168.6562+(4.0923344368*day);
 
-    return OrbitalElements(rev(asc_node),rev(incl),rev(arg),rev(axis),rev(eccen),rev(mean_anon));
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 
 }
 OrbitalElements Planets::computeVenusOE(double day){
@@ -53,7 +49,7 @@ OrbitalElements Planets::computeVenusOE(double day){
     double eccen = 0.006773 - (1.302E-9*day);
     double mean_anon = 48.0052+(1.6021302244*day);
 
-    return OrbitalElements(rev(asc_node),rev(incl),rev(arg),rev(axis),rev(eccen),rev(mean_anon));
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 }
 OrbitalElements Planets::computeMarsOE(double day){
     double asc_node = 49.5574 + (2.11081E-5*day);
@@ -63,7 +59,7 @@ OrbitalElements Planets::computeMarsOE(double day){
     double eccen = 0.093405 + (2.516E-9 * day);
     double mean_anon = 18.6021 + (0.5240207766 * day);
 
-    return OrbitalElements(rev(asc_node),rev(incl),rev(arg),rev(axis),rev(eccen),rev(mean_anon));
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 
 }
 OrbitalElements Planets::computeJupiterOE(double day){
@@ -74,7 +70,7 @@ OrbitalElements Planets::computeJupiterOE(double day){
     double eccen = 0.048498 + (4.469E-9 * day);
     double mean_anon = 19.8950 + (0.0830853001 * day);
 
-    return OrbitalElements(rev(asc_node),rev(incl),rev(arg),rev(axis),rev(eccen),rev(mean_anon));
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 
 }
 OrbitalElements Planets::computeSaturnOE(double day){
@@ -85,7 +81,7 @@ OrbitalElements Planets::computeSaturnOE(double day){
     double eccen = 0.055546 - (9.499E-9 * day);
     double mean_anon = 316.9670 + (0.0334442282 * day);
 
-    return OrbitalElements(rev(asc_node),rev(incl),rev(arg),rev(axis),rev(eccen),rev(mean_anon));
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 }
 OrbitalElements Planets::computeUranusOE(double day){
     double asc_node = 74.0005 + (1.3978E-5*day);
@@ -95,7 +91,7 @@ OrbitalElements Planets::computeUranusOE(double day){
     double eccen = 0.047318 + (7.45E-9 * day);
     double mean_anon = 142.5905 + (0.011725806 * day);
 
-    return OrbitalElements(rev(asc_node),rev(incl),rev(arg),rev(axis),rev(eccen),rev(mean_anon));
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 
 }
 OrbitalElements Planets::computeNeptuneOE(double day){
@@ -106,10 +102,7 @@ OrbitalElements Planets::computeNeptuneOE(double day){
     double eccen = 0.008606 + (2.15E-9 * day);
     double mean_anon = 260.2471 + (0.005995147 * day);
 
-    return OrbitalElements(rev(asc_node),rev(incl),rev(arg),rev(axis),rev(eccen),rev(mean_anon));
-}
-double Planets::rev(double value){
-    return value - floor(value/360.0)*360.0;
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 }
 double Planets::computeCurrentDay (int year, int month, int day, int hour, int minute){
     return 367*year - 7 * ( year + (month+9)/12 ) / 4 - 3 * ( (year + (month-9)/7 ) / 100 + 1 ) / 4 + 275*month/9 + day - 730515;
