@@ -8,14 +8,9 @@ class SolarSystem{
         void updateSystem(int year,int month,int day,int hour,int minute);
 
     private:
-        int m_year;
-        int m_month;
-        int m_day;
-        int m_hour;
-        int m_minute;
-        int time_scale;
         Planets planets;
-        void computeTimeScale(void);
+        double time_scale;
+        void computeTimeScale(int year, int month, int day, int hour, int minute);
 };
 
 
