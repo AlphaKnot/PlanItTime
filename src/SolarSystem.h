@@ -5,11 +5,13 @@
 class SolarSystem{
     public:
         SolarSystem(int year,int month,int day,int hour,int minute);
+        ~SolarSystem();
+        void initSystem(int current_day);
         void updateSystem(int year,int month,int day,int hour,int minute);
 
     private:
-        Planets planets;
-        double time_scale;
+        double current_day;
+        Planets* planets;
         double computeCurrentDay(int year, int month, int day, int hour, int minute);
 };
 
