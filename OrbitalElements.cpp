@@ -3,14 +3,15 @@
 #include<math.h>
 
 
-OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon){
-    
+OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon, double radius){
+
     m_asc_node = rev(asc_node);
     m_incl = rev(incl);
     m_arg = rev(arg);
     m_axis = rev(axis);
     m_eccen = rev(eccen);
     m_mean_anon = rev(mean_anon);
+    m_radius = radius;
 
     if (asc_node != 0){
         computeCoordinates();
@@ -18,10 +19,11 @@ OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, doubl
         computeCoordinatesEarth();
     }
 
+
 }
 void OrbitalElements::computeCoordinates(){
-    
-    
+
+
     double eccentric_anomaly = computeEccentricAnomaly(10);
 
     eccentric_anomaly = rev(eccentric_anomaly);
@@ -34,7 +36,7 @@ void OrbitalElements::computeCoordinates(){
 
     true_anomaly = degrees(true_anomaly);
     true_anomaly = rev(true_anomaly);
-    
+
     m_eclip_x = radius * (cos(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))-sin(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
     m_eclip_y = radius * (sin(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))+cos(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
     m_eclip_z = radius * sin(radians(true_anomaly+m_arg))*sin(radians(m_incl));
@@ -44,12 +46,16 @@ void OrbitalElements::computeCoordinates(){
 
     m_long = degrees(m_long);
     m_long = rev(m_long);
-    
+
     m_lat = atan2(radians(m_eclip_z),radians(sqrt(pow(m_eclip_x,2) + pow(m_eclip_y,2))));
     m_lat = degrees(m_lat);
-    m_radius = sqrt(pow(m_eclip_x,2)+pow(m_eclip_y,2)+pow(m_eclip_z,2));
 
-        
+    //m_radius = sqrt(pow(m_eclip_x,2)+pow(m_eclip_y,2)+pow(m_eclip_z,2));
+    m_eclip_x = m_radius*cos(radians(m_long))*cos(radians(m_lat));
+    m_eclip_y = m_radius*sin(radians(m_long))*cos(radians(m_lat));
+    //m_eclip_z = m_radius*sin(radians(m_lat));
+
+
 }
 void OrbitalElements::computeCoordinatesEarth(){
 
@@ -60,22 +66,22 @@ void OrbitalElements::computeCoordinatesEarth(){
     double rect_x = m_axis*(cos(radians(eccentric_anomaly))-m_eccen);
     double rect_y = m_axis*sqrt(1-m_eccen*m_eccen)*sin(radians(eccentric_anomaly));
 
-    double radius = sqrt(pow(rect_x,2)+pow(rect_y,2));
+    //double radius = sqrt(pow(rect_x,2)+pow(rect_y,2));
     double true_anomaly = atan2(radians(rect_y),radians(rect_x));
 
     true_anomaly = degrees(true_anomaly);
     true_anomaly = rev(true_anomaly);
-    
+
     m_long = true_anomaly+m_arg;
 
     m_long = rev(m_long-180);
 
-    m_eclip_x = radius*cos(radians(m_long));
-    m_eclip_y = radius*sin(radians(m_long));
+    m_eclip_x = m_radius*cos(radians(m_long));
+    m_eclip_y = m_radius*sin(radians(m_long));
     m_eclip_z = 0;
 
-    m_lat = 0;    
-    m_radius = radius;
+    m_lat = 0;
+
 
 }
 double OrbitalElements::computeEccentricAnomaly(int itr){

@@ -4,8 +4,10 @@
 #include<string>
 
 
-Planets::Planets(int day){
-    computePositions(day);
+Planets::Planets(double year, double month, double day, double hour, double minute){
+    double curr_day = computeCurrentDay(year,month,day,hour,minute);
+    std::cout << curr_day << "\n";
+    computePositions(curr_day);
 }
 std::vector<OrbitalElements> Planets::getPlanets(){
     return planets;
@@ -44,7 +46,7 @@ void Planets::pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE
     double Mj = jupiterOE->getMeanAnom();
     double Ms = saturnOE->getMeanAnom();
     double Mu = uranusOE->getMeanAnom();
-    
+
     jupiter_added_long += -0.332 * sin(radians(2*Mj - 5*Ms - 67.6));
     jupiter_added_long += -0.056 * sin(radians(2*Mj - 2*Ms + 21));
     jupiter_added_long += +0.042 * sin(radians(3*Mj - 5*Ms + 21));
@@ -83,7 +85,7 @@ OrbitalElements Planets::computeMercuryOE(double day){
     double eccen = 0.205635 + (5.59E-10*day);
     double mean_anon = 168.6562+(4.0923344368*day);
 
-    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,25);
 
 }
 OrbitalElements Planets::computeVenusOE(double day){
@@ -94,7 +96,7 @@ OrbitalElements Planets::computeVenusOE(double day){
     double eccen = 0.006773 - (1.302E-9*day);
     double mean_anon = 48.0052+(1.6021302244*day);
 
-    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,50);
 }
 OrbitalElements Planets::computeEarthOE(double day){
     double asc_node = 0;
@@ -104,7 +106,7 @@ OrbitalElements Planets::computeEarthOE(double day){
     double eccen = 0.016709 - (1.151E-9*day);
     double mean_anon = 356.047 + (0.9856002585*day);
 
-    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,75);
 
 }
 OrbitalElements Planets::computeMarsOE(double day){
@@ -115,7 +117,7 @@ OrbitalElements Planets::computeMarsOE(double day){
     double eccen = 0.093405 + (2.516E-9 * day);
     double mean_anon = 18.6021 + (0.5240207766 * day);
 
-    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,100);
 
 }
 OrbitalElements Planets::computeJupiterOE(double day){
@@ -126,7 +128,7 @@ OrbitalElements Planets::computeJupiterOE(double day){
     double eccen = 0.048498 + (4.469E-9 * day);
     double mean_anon = 19.8950 + (0.0830853001 * day);
 
-    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,125);
 
 }
 OrbitalElements Planets::computeSaturnOE(double day){
@@ -137,7 +139,7 @@ OrbitalElements Planets::computeSaturnOE(double day){
     double eccen = 0.055546 - (9.499E-9 * day);
     double mean_anon = 316.9670 + (0.0334442282 * day);
 
-    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,150);
 }
 OrbitalElements Planets::computeUranusOE(double day){
     double asc_node = 74.0005 + (1.3978E-5*day);
@@ -147,7 +149,7 @@ OrbitalElements Planets::computeUranusOE(double day){
     double eccen = 0.047318 + (7.45E-9 * day);
     double mean_anon = 142.5905 + (0.011725806 * day);
 
-    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,175);
 
 }
 OrbitalElements Planets::computeNeptuneOE(double day){
@@ -158,8 +160,12 @@ OrbitalElements Planets::computeNeptuneOE(double day){
     double eccen = 0.008606 + (2.15E-9 * day);
     double mean_anon = 260.2471 + (0.005995147 * day);
 
-    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,200);
 }
+double Planets::computeCurrentDay(double year, double month, double day, double hour, double minute){
+    return 367*year - 7 * ( year + (month+9)/12 ) / 4 - 3 * ( (year + (month-9)/7 ) / 100 + 1 ) / 4 + 275*month/9 + day - 730515;
+}
+
 double Planets::radians(double x){
     return x*PI/180;
 }
