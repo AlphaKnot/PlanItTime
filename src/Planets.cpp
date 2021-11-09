@@ -31,10 +31,6 @@ void Planets::computePositions(double day){
     planets.push_back(saturnOE);
     planets.push_back(uranusOE);
     planets.push_back(neptuneOE);
-    std::string planetNameList[] = {"Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"};
-    for (int i = 0; i < planets.size(); i++){
-        planets.at(i).print(planetNameList[i]);
-    }
 
 }
 void Planets::pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE, OrbitalElements* uranusOE){
