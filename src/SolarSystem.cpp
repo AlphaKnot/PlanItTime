@@ -13,5 +13,11 @@ void SolarSystem::updateSystem(int year, int month, int day, int hour, int minut
 double SolarSystem::computeCurrentDay (int year, int month, int day, int hour, int minute){
     return 367*year - 7 * ( year + (month+9)/12 ) / 4 - 3 * ( (year + (month-9)/7 ) / 100 + 1 ) / 4 + 275*month/9 + day - 730515;
 }
+int main(int argc, char const *argv[])
+{
+    SolarSystem s = SolarSystem(2021,11,8,9,11);
+    return 0;
+}
+
 
                                        

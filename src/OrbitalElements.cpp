@@ -12,7 +12,11 @@ OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, doubl
     m_eccen = rev(eccen);
     m_mean_anon = rev(mean_anon);
 
-    computeCoordinates();
+    if (asc_node != 0){
+        computeCoordinates();
+    } else {
+        computeCoordinatesEarth();
+    }
 
 }
 void OrbitalElements::computeCoordinates(){
@@ -47,6 +51,33 @@ void OrbitalElements::computeCoordinates(){
 
         
 }
+void OrbitalElements::computeCoordinatesEarth(){
+
+    double eccentric_anomaly = computeEccentricAnomaly(10);
+
+    eccentric_anomaly = rev(eccentric_anomaly);
+
+    double rect_x = m_axis*(cos(radians(eccentric_anomaly))-m_eccen);
+    double rect_y = m_axis*sqrt(1-m_eccen*m_eccen)*sin(radians(eccentric_anomaly));
+
+    double radius = sqrt(pow(rect_x,2)+pow(rect_y,2));
+    double true_anomaly = atan2(radians(rect_y),radians(rect_x));
+
+    true_anomaly = degrees(true_anomaly);
+    true_anomaly = rev(true_anomaly);
+    
+    m_long = true_anomaly+m_arg;
+    m_long = degrees(m_long);
+    m_long = rev(m_long);
+
+    m_clip_x = -radius*cos(m_long);
+    m_clip_y = -radius*sin(m_long);
+    m_clip_z = 0;
+
+    m_lat = 0;    
+    m_radius = radius;
+
+}
 double OrbitalElements::computeEccentricAnomaly(int itr){
 
     double previous = m_mean_anon + (180/PI) * m_eccen * sin(radians(m_mean_anon)) * (1+m_eccen*cos(radians(m_mean_anon)));
@@ -60,6 +91,9 @@ double OrbitalElements::computeEccentricAnomaly(int itr){
         count++;
     }
     return current;
+}
+void OrbitalElements::print(){
+    std::cout << m_long << " " << m_lat << " " << m_radius << "\n";
 }
 // getters
 double OrbitalElements::getMeanAnom(){
