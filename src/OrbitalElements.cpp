@@ -93,7 +93,7 @@ double OrbitalElements::computeEccentricAnomaly(int itr){
     return current;
 }
 void OrbitalElements::print(std::string planetName){
-    std::cout << planetName << " " << m_long << " " << m_lat << " " << m_radius << "\n";
+    std::cout << planetName << " "<< m_long << " " << m_eclip_x << " " << m_eclip_y << " " << m_eclip_z << "\n";
 }
 void OrbitalElements::updateEclipCoords(){
     double lat = radians(m_lat);
@@ -127,9 +127,11 @@ double OrbitalElements::getEclipZ(){
 //setters
 void OrbitalElements::setLong(double longtitude){
     m_long = longtitude;
+    updateEclipCoords();
 }
 void OrbitalElements::setLat(double lat){
     m_lat = lat;
+    updateEclipCoords();
 }
 double OrbitalElements::rev(double value){
     return value - floor(value/360.0)*360.0;
