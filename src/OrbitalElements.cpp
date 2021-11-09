@@ -74,7 +74,6 @@ void OrbitalElements::computeCoordinatesEarth(){
     m_eclip_y = radius*sin(radians(m_long));
     m_eclip_z = 0;
 
-    std::cout << m_long << " " << m_eclip_x << " " << m_eclip_y << "\n";
     m_lat = 0;    
     m_radius = radius;
 
