@@ -2,6 +2,7 @@
 #define UISCREEN_H
 
 #include <QMainWindow>
+#include<QWidget>
 #include"timewidget.h"
 
 QT_BEGIN_NAMESPACE
@@ -19,5 +20,6 @@ public:
 private:
     Ui::UIScreen *ui;
     TimeWidget *tw;
+
 };
 #endif // UISCREEN_H
