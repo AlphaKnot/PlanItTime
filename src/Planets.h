@@ -11,26 +11,19 @@ class Planets{
     private:
         void computePositions(double);
 
-        void jupiterPertubations();
+        void jupiterPertubations(OrbitalElements jupiterOE, OrbitalElements saturnOE);
         void saturnPertubations();
         void uranusPertubations();
 
-        void computeMoonOE(double);
-        void computeMercuryOE(double);
-        void computeVenusOE(double);
-        void computeMarsOE(double);
-        void computeJupiterOE(double);
-        void computeSaturnOE(double);
-        void computeUranusOE(double);
-        void computeNeptuneOE(double);
+        OrbitalElements computeMoonOE(double);
+        OrbitalElements computeMercuryOE(double);
+        OrbitalElements computeVenusOE(double);
+        OrbitalElements computeMarsOE(double);
+        OrbitalElements computeJupiterOE(double);
+        OrbitalElements computeSaturnOE(double);
+        OrbitalElements computeUranusOE(double);
+        OrbitalElements computeNeptuneOE(double);
 
-        OrbitalElements mercuryOE;
-        OrbitalElements venusOE;
-        OrbitalElements marsOE;
-        OrbitalElements jupiterOE;
-        OrbitalElements saturnOE;
-        OrbitalElements uranusOE;
-        OrbitalElements neptuneOE;
 
         std::vector<OrbitalElements> planets;
 

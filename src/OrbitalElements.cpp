@@ -15,9 +15,6 @@ OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, doubl
     computeCoordinates();
 
 }
-OrbitalElements::OrbitalElements(){
-    
-}
 void OrbitalElements::computeCoordinates(){
     
     

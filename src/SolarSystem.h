@@ -6,12 +6,10 @@
 class SolarSystem{
     public:
         SolarSystem(int year,int month,int day,int hour,int minute);
-        ~SolarSystem();
         void updateSystem(int year,int month,int day,int hour,int minute);
 
     private:
         double current_day;
-        Planets* planets;
         double computeCurrentDay(int year, int month, int day, int hour, int minute);
         std::vector<OrbitalElements> planetData;
 };
