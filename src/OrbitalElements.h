@@ -5,9 +5,6 @@ const double PI = 3.14159265359;
 class OrbitalElements{
     public:
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon);
-        OrbitalElements();
-        void printOrbitalElements(std::string planetName);
-        
         double getLong();
         double getLat();
         double getRad();
