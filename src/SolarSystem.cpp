@@ -25,6 +25,8 @@ int main(int argc, char const *argv[]){
     std::cout << "\n";
     SolarSystem g = SolarSystem(1994,4,19,0,0);
     std::cout << "\n";
+    std::cout << "here" << "\n";
+    
     return 0;
 }
 

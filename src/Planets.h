@@ -6,8 +6,7 @@
 class Planets{
     public:
         Planets(int day);
-        ~Planets();
-        std::vector<OrbitalElements*> getPlanets();
+        std::vector<OrbitalElements> getPlanets();
 
     private:
         void computePositions(double);
@@ -25,15 +24,15 @@ class Planets{
         void computeUranusOE(double);
         void computeNeptuneOE(double);
 
-        OrbitalElements *mercuryOE;
-        OrbitalElements *venusOE;
-        OrbitalElements *marsOE;
-        OrbitalElements *jupiterOE;
-        OrbitalElements *saturnOE;
-        OrbitalElements *uranusOE;
-        OrbitalElements *neptuneOE;
+        OrbitalElements mercuryOE;
+        OrbitalElements venusOE;
+        OrbitalElements marsOE;
+        OrbitalElements jupiterOE;
+        OrbitalElements saturnOE;
+        OrbitalElements uranusOE;
+        OrbitalElements neptuneOE;
 
-        std::vector<OrbitalElements*> planets;
+        std::vector<OrbitalElements> planets;
 
         double radians(double x);
         double rev(double x);
