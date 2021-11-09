@@ -32,10 +32,6 @@ void Planets::computePositions(double day){
     planets.push_back(uranusOE);
     planets.push_back(neptuneOE);
 
-    for (int i = 0; i < planets.size(); i++){
-        planets.at(i).print();
-    }
-
 }
 void Planets::pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE, OrbitalElements* uranusOE){
 

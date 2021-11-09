@@ -5,22 +5,17 @@ const double PI = 3.14159265359;
 class OrbitalElements{
     public:
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon);
-        void print();
+        void updateEclipCoords();
         double getLong();
         double getLat();
         double getRad();
-        double getClipX();
-        double getClipY();
-        double getClipZ();
-
+        double getEclipX();
+        double getEclipY();
+        double getEclipZ();
         double getMeanAnom();
 
         void setLong(double longtitude);
         void setLat(double lat);
-        void setRad(double rad);
-        void setClipX(double clipx);
-        void setClipY(double clipy);
-        void setClipZ(double clipz);
 
 
     private:
@@ -28,9 +23,9 @@ class OrbitalElements{
         double m_long;
         double m_lat;
         double m_radius;
-        double m_clip_x;
-        double m_clip_y;
-        double m_clip_z;
+        double m_eclip_x;
+        double m_eclip_y;
+        double m_eclip_z;
         
         double m_asc_node;
         double m_incl;

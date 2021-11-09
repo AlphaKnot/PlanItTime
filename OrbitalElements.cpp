@@ -35,19 +35,19 @@ void OrbitalElements::computeCoordinates(){
     true_anomaly = degrees(true_anomaly);
     true_anomaly = rev(true_anomaly);
     
-    m_clip_x = radius * (cos(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))-sin(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
-    m_clip_y = radius * (sin(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))+cos(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
-    m_clip_z = radius * sin(radians(true_anomaly+m_arg))*sin(radians(m_incl));
+    m_eclip_x = radius * (cos(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))-sin(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
+    m_eclip_y = radius * (sin(radians(m_asc_node)) * cos(radians(true_anomaly+m_arg))+cos(radians(m_asc_node))*sin(radians(true_anomaly+m_arg)) *cos(radians(m_incl)));
+    m_eclip_z = radius * sin(radians(true_anomaly+m_arg))*sin(radians(m_incl));
 
 
-    m_long = atan2(radians(m_clip_y),radians(m_clip_x));
+    m_long = atan2(radians(m_eclip_y),radians(m_eclip_x));
 
     m_long = degrees(m_long);
     m_long = rev(m_long);
     
-    m_lat = atan2(radians(m_clip_z),radians(sqrt(pow(m_clip_x,2) + pow(m_clip_y,2))));
+    m_lat = atan2(radians(m_eclip_z),radians(sqrt(pow(m_eclip_x,2) + pow(m_eclip_y,2))));
     m_lat = degrees(m_lat);
-    m_radius = sqrt(pow(m_clip_x,2)+pow(m_clip_y,2)+pow(m_clip_z,2));
+    m_radius = sqrt(pow(m_eclip_x,2)+pow(m_eclip_y,2)+pow(m_eclip_z,2));
 
         
 }
@@ -70,9 +70,9 @@ void OrbitalElements::computeCoordinatesEarth(){
     m_long = degrees(m_long);
     m_long = rev(m_long);
 
-    m_clip_x = -radius*cos(m_long);
-    m_clip_y = -radius*sin(m_long);
-    m_clip_z = 0;
+    m_eclip_x = -radius*cos(m_long);
+    m_eclip_y = -radius*sin(m_long);
+    m_eclip_z = 0;
 
     m_lat = 0;    
     m_radius = radius;
@@ -92,8 +92,15 @@ double OrbitalElements::computeEccentricAnomaly(int itr){
     }
     return current;
 }
-void OrbitalElements::print(){
-    std::cout << m_long << " " << m_lat << " " << m_radius << "\n";
+void OrbitalElements::updateEclipCoords(){
+    double lat = radians(m_lat);
+    double lon = radians(m_long);
+
+    m_eclip_x = m_radius*cos(lon)*cos(lat);
+    m_eclip_y = m_radius*sin(lon)*cos(lat);
+    m_eclip_z = m_radius*sin(m_lat);
+
+
 }
 // getters
 double OrbitalElements::getMeanAnom(){
@@ -105,36 +112,23 @@ double OrbitalElements::getLong(){
 double OrbitalElements::getLat(){
     return m_lat;
 }
-double OrbitalElements::getRad(){
-    return m_radius;
+double OrbitalElements::getEclipX(){
+    return m_eclip_x;
 }
-double OrbitalElements::getClipX(){
-    return m_clip_x;
+double OrbitalElements::getEclipY(){
+    return m_eclip_y;
 }
-double OrbitalElements::getClipY(){
-    return m_clip_y;
-}
-double OrbitalElements::getClipZ(){
-    return m_clip_z;
+double OrbitalElements::getEclipZ(){
+    return m_eclip_z;
 }
 //setters
 void OrbitalElements::setLong(double longtitude){
     m_long = longtitude;
+    updateEclipCoords();
 }
 void OrbitalElements::setLat(double lat){
     m_lat = lat;
-}
-void OrbitalElements::setRad(double rad){
-    m_radius = rad;
-}
-void OrbitalElements::setClipX(double clip_x){
-    m_clip_x = clip_x;
-}
-void OrbitalElements::setClipY(double clip_y){
-    m_clip_y = clip_y;
-}
-void OrbitalElements::setClipZ(double clip_z){
-    m_clip_z = clip_z;
+    updateEclipCoords();
 }
 double OrbitalElements::rev(double value){
     return value - floor(value/360.0)*360.0;
