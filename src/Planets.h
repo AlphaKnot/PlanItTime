@@ -35,6 +35,10 @@ class Planets{
 
         std::vector<OrbitalElements*> planets;
 
+        double radians(double x);
+        double rev(double x);
+        double degrees(double x);
+
 
 
 
