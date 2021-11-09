@@ -5,11 +5,12 @@
 
 class Planets{
     public:
-        Planets(int day);
+        Planets(double year, double month, double day, double hour, double minute);
         std::vector<OrbitalElements> getPlanets();
 
     private:
         void computePositions(double);
+        double computeCurrentDay(double year, double month, double day, double hour, double minute);
 
         void pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE, OrbitalElements* uranusOE);
 

@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include<QWidget>
-#include"timewidget.h"
+//#include"timewidget.h"
+#include"solarwidget.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class UIScreen; }
@@ -19,7 +21,8 @@ public:
 
 private:
     Ui::UIScreen *ui;
-    TimeWidget *tw;
+    //TimeWidget *tw;
+    SolarWidget *sw;
 
 };
 #endif // UISCREEN_H
