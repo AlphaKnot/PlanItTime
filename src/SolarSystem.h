@@ -13,7 +13,7 @@ class SolarSystem{
         double current_day;
         Planets* planets;
         double computeCurrentDay(int year, int month, int day, int hour, int minute);
-        std::vector<OrbitalElements*> planetData;
+        std::vector<OrbitalElements> planetData;
 };
 
 

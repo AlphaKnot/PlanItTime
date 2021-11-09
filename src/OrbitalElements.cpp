@@ -15,6 +15,9 @@ OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, doubl
     computeCoordinates();
 
 }
+OrbitalElements::OrbitalElements(){
+    
+}
 void OrbitalElements::computeCoordinates(){
     
     
@@ -61,6 +64,7 @@ double OrbitalElements::computeEccentricAnomaly(int itr){
     }
     return current;
 }
+// getters
 double OrbitalElements::getMeanAnom(){
     return m_mean_anon;
 }
@@ -81,6 +85,25 @@ double OrbitalElements::getClipY(){
 }
 double OrbitalElements::getClipZ(){
     return m_clip_z;
+}
+//setters
+void OrbitalElements::setLong(double longtitude){
+    m_long = longtitude;
+}
+void OrbitalElements::setLat(double lat){
+    m_lat = lat;
+}
+void OrbitalElements::setRad(double rad){
+    m_radius = rad;
+}
+void OrbitalElements::setClipX(double clip_x){
+    m_clip_x = clip_x;
+}
+void OrbitalElements::setClipY(double clip_y){
+    m_clip_y = clip_y;
+}
+void OrbitalElements::setClipZ(double clip_z){
+    m_clip_z = clip_z;
 }
 // for testing
 void OrbitalElements::printOrbitalElements(std::string planetName){

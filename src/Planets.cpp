@@ -7,18 +7,7 @@
 Planets::Planets(int day){
     computePositions(day);
 }
-Planets::~Planets(){
-
-    delete mercuryOE;
-    delete venusOE;
-    delete marsOE;
-    delete jupiterOE;
-    delete saturnOE;
-    delete uranusOE;
-    delete neptuneOE;
-
-}
-std::vector<OrbitalElements*> Planets::getPlanets(){
+std::vector<OrbitalElements> Planets::getPlanets(){
     return planets;
 }
 void Planets::computePositions(double day){
@@ -31,14 +20,16 @@ void Planets::computePositions(double day){
     computeUranusOE(day);
     computeNeptuneOE(day);
 
+    jupiterPertubations();
+
     // testing
-    mercuryOE->printOrbitalElements("Mercury");
-    venusOE->printOrbitalElements("Venus");
-    marsOE->printOrbitalElements("Mars");
-    jupiterOE->printOrbitalElements("Jupiter");
-    saturnOE->printOrbitalElements("Saturn");
-    uranusOE->printOrbitalElements("Uranus");
-    neptuneOE->printOrbitalElements("Neptune");
+    mercuryOE.printOrbitalElements("Mercury");
+    venusOE.printOrbitalElements("Venus");
+    marsOE.printOrbitalElements("Mars");
+    jupiterOE.printOrbitalElements("Jupiter");
+    saturnOE.printOrbitalElements("Saturn");
+    uranusOE.printOrbitalElements("Uranus");
+    neptuneOE.printOrbitalElements("Neptune");
 
     planets.push_back(mercuryOE);
     planets.push_back(venusOE);
@@ -54,8 +45,8 @@ void Planets::jupiterPertubations(){
 
     double added_long = 0;
 
-    double Mj = jupiterOE -> getMeanAnom();
-    double Ms = saturnOE -> getMeanAnom();
+    double Mj = jupiterOE.getMeanAnom();
+    double Ms = saturnOE.getMeanAnom();
     
     added_long += -0.332 * sin(radians(2*Mj - 5*Ms - 67.6));
     added_long += -0.056 * sin(radians(2*Mj - 2*Ms + 21));
@@ -65,6 +56,7 @@ void Planets::jupiterPertubations(){
     added_long += +0.023 * sin(radians(2*Mj - 3*Ms + 52));
     added_long += -0.016 * sin(radians(Mj - 5*Ms - 69));
     
+    jupiterOE.setLong(jupiterOE.getLong() + added_long);
 
 
 }
@@ -82,7 +74,7 @@ void Planets::computeMercuryOE(double day){
     double eccen = 0.205635 + (5.59E-10*day);
     double mean_anon = 168.6562+(4.0923344368*day);
 
-    mercuryOE = new OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    mercuryOE = OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 
 }
 void Planets::computeVenusOE(double day){
@@ -93,7 +85,7 @@ void Planets::computeVenusOE(double day){
     double eccen = 0.006773 - (1.302E-9*day);
     double mean_anon = 48.0052+(1.6021302244*day);
 
-    venusOE = new OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    venusOE = OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 }
 void Planets::computeMarsOE(double day){
     double asc_node = 49.5574 + (2.11081E-5*day);
@@ -103,7 +95,7 @@ void Planets::computeMarsOE(double day){
     double eccen = 0.093405 + (2.516E-9 * day);
     double mean_anon = 18.6021 + (0.5240207766 * day);
 
-    marsOE = new OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    marsOE = OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 
 }
 void Planets::computeJupiterOE(double day){
@@ -114,7 +106,7 @@ void Planets::computeJupiterOE(double day){
     double eccen = 0.048498 + (4.469E-9 * day);
     double mean_anon = 19.8950 + (0.0830853001 * day);
 
-    jupiterOE = new OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    jupiterOE = OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 
 }
 void Planets::computeSaturnOE(double day){
@@ -125,7 +117,7 @@ void Planets::computeSaturnOE(double day){
     double eccen = 0.055546 - (9.499E-9 * day);
     double mean_anon = 316.9670 + (0.0334442282 * day);
 
-    saturnOE = new OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    saturnOE = OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 }
 void Planets::computeUranusOE(double day){
     double asc_node = 74.0005 + (1.3978E-5*day);
@@ -135,7 +127,7 @@ void Planets::computeUranusOE(double day){
     double eccen = 0.047318 + (7.45E-9 * day);
     double mean_anon = 142.5905 + (0.011725806 * day);
 
-    uranusOE = new OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    uranusOE = OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 
 }
 void Planets::computeNeptuneOE(double day){
@@ -146,7 +138,7 @@ void Planets::computeNeptuneOE(double day){
     double eccen = 0.008606 + (2.15E-9 * day);
     double mean_anon = 260.2471 + (0.005995147 * day);
 
-    neptuneOE = new OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+    neptuneOE = OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 }
 double Planets::radians(double x){
     return x*PI/180;
