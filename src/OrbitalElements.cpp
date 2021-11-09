@@ -2,7 +2,6 @@
 #include<iostream>
 #include<math.h>
 
-const double PI = 3.14159265359;
 
 OrbitalElements::OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon){
     
@@ -61,6 +60,9 @@ double OrbitalElements::computeEccentricAnomaly(int itr){
         count++;
     }
     return current;
+}
+double OrbitalElements::getMeanAnom(){
+    return m_mean_anon;
 }
 double OrbitalElements::getLong(){
     return m_long;

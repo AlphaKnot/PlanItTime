@@ -1,11 +1,16 @@
 #ifndef ORBITALELEMENTS_H
 #define ORBITALELEMENTS_H
 #include<string>
+const double PI = 3.14159265359;
 class OrbitalElements{
     public:
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon);
         
         void printOrbitalElements(std::string planetName);
+
+        double radians(double x);
+        double rev(double x);
+        double degrees(double x);
         
         double getLong();
         double getLat();
@@ -13,6 +18,7 @@ class OrbitalElements{
         double getClipX();
         double getClipY();
         double getClipZ();
+        double getMeanAnom();
 
     private:
 
@@ -34,10 +40,6 @@ class OrbitalElements{
         void computeCoordinates();
         double computeEccentricAnomaly(int itr);
         
-
-        double radians(double x);
-        double degrees(double x);
-        double rev(double);
 };
 
 

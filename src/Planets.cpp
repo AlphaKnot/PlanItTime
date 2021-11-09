@@ -3,12 +3,12 @@
 #include<iostream>
 #include<string>
 
+
 Planets::Planets(int day){
     computePositions(day);
-
 }
 Planets::~Planets(){
-    
+
     delete mercuryOE;
     delete venusOE;
     delete marsOE;
@@ -31,7 +31,7 @@ void Planets::computePositions(double day){
     computeUranusOE(day);
     computeNeptuneOE(day);
 
-
+    // testing
     mercuryOE->printOrbitalElements("Mercury");
     venusOE->printOrbitalElements("Venus");
     marsOE->printOrbitalElements("Mars");
@@ -50,7 +50,23 @@ void Planets::computePositions(double day){
 
 }
 void Planets::jupiterPertubations(){
- 
+
+
+    double added_long = 0;
+
+    double Mj = jupiterOE -> getMeanAnom();
+    double Ms = saturnOE -> getMeanAnom();
+    /**
+    added_long += -0.332 * sin(radians(2*Mj - 5*Ms - 67.6));
+    added_long += -0.056 * sin(radians(2*Mj - 2*Ms + 21));
+    added_long += +0.042 * sin(radians(3*Mj - 5*Ms + 21));
+    added_long += -0.036 * sin(radians(Mj - 2*Ms));
+    added_long += +0.022 * cos(radians(Mj - Ms));
+    added_long += +0.023 * sin(radians(2*Mj - 3*Ms + 52));
+    added_long += -0.016 * sin(radians(Mj - 5*Ms - 69));
+    */
+
+
 }
 void Planets::saturnPertubations(){
 
