@@ -102,14 +102,6 @@ void OrbitalElements::setClipY(double clip_y){
 void OrbitalElements::setClipZ(double clip_z){
     m_clip_z = clip_z;
 }
-// for testing
-void OrbitalElements::printOrbitalElements(std::string planetName){
-    std::cout << planetName << ": " <<
-        m_long << " " <<
-        m_lat << " " <<
-        m_radius << " " << 
-        "\n";
-}
 double OrbitalElements::rev(double value){
     return value - floor(value/360.0)*360.0;
 }

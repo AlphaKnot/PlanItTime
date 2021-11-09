@@ -11,10 +11,8 @@ class Planets{
     private:
         void computePositions(double);
 
-        void jupiterPertubations(OrbitalElements jupiterOE, OrbitalElements saturnOE);
-        void saturnPertubations();
-        void uranusPertubations();
-
+        void pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE, OrbitalElements* uranusOE);
+        
         OrbitalElements computeMoonOE(double);
         OrbitalElements computeMercuryOE(double);
         OrbitalElements computeVenusOE(double);

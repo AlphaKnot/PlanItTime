@@ -12,7 +12,6 @@ std::vector<OrbitalElements> Planets::getPlanets(){
 }
 void Planets::computePositions(double day){
 
-
     OrbitalElements mercuryOE = computeMercuryOE(day);
     OrbitalElements venusOE = computeVenusOE(day);
     OrbitalElements marsOE = computeMarsOE(day);
@@ -21,17 +20,7 @@ void Planets::computePositions(double day){
     OrbitalElements uranusOE = computeUranusOE(day);
     OrbitalElements neptuneOE = computeNeptuneOE(day);
 
-  
-    jupiterPertubations(jupiterOE,saturnOE);
-
-    // testing
-    mercuryOE.printOrbitalElements("Mercury");
-    venusOE.printOrbitalElements("Venus");
-    marsOE.printOrbitalElements("Mars");
-    jupiterOE.printOrbitalElements("Jupiter");
-    saturnOE.printOrbitalElements("Saturn");
-    uranusOE.printOrbitalElements("Uranus");
-    neptuneOE.printOrbitalElements("Neptune");
+    pertubations(&jupiterOE,&saturnOE,&uranusOE);
 
     planets.push_back(mercuryOE);
     planets.push_back(venusOE);
@@ -42,32 +31,48 @@ void Planets::computePositions(double day){
     planets.push_back(neptuneOE);
 
 }
-void Planets::jupiterPertubations(OrbitalElements jupiterOE, OrbitalElements saturnOE){
+void Planets::pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE, OrbitalElements* uranusOE){
 
 
-    double added_long = 0;
+    double jupiter_added_long = 0;
+    double saturn_added_long = 0;
+    double saturn_added_lat = 0;
+    double uranus_added_long = 0;
 
-    double Mj = jupiterOE.getMeanAnom();
-    double Ms = saturnOE.getMeanAnom();
+    double Mj = jupiterOE->getMeanAnom();
+    double Ms = saturnOE->getMeanAnom();
+    double Mu = uranusOE->getMeanAnom();
     
-    added_long += -0.332 * sin(radians(2*Mj - 5*Ms - 67.6));
-    added_long += -0.056 * sin(radians(2*Mj - 2*Ms + 21));
-    added_long += +0.042 * sin(radians(3*Mj - 5*Ms + 21));
-    added_long += -0.036 * sin(radians(Mj - 2*Ms));
-    added_long += +0.022 * cos(radians(Mj - Ms));
-    added_long += +0.023 * sin(radians(2*Mj - 3*Ms + 52));
-    added_long += -0.016 * sin(radians(Mj - 5*Ms - 69));
-    
-    jupiterOE.setLong(jupiterOE.getLong() + added_long);
+    jupiter_added_long += -0.332 * sin(radians(2*Mj - 5*Ms - 67.6));
+    jupiter_added_long += -0.056 * sin(radians(2*Mj - 2*Ms + 21));
+    jupiter_added_long += +0.042 * sin(radians(3*Mj - 5*Ms + 21));
+    jupiter_added_long += -0.036 * sin(radians(Mj - 2*Ms));
+    jupiter_added_long += +0.022 * cos(radians(Mj - Ms));
+    jupiter_added_long += +0.023 * sin(radians(2*Mj - 3*Ms + 52));
+    jupiter_added_long += -0.016 * sin(radians(Mj - 5*Ms - 69));
 
+    jupiterOE->setLong(jupiterOE->getLong() + jupiter_added_long);
+
+    saturn_added_long += 0.812 * sin(radians(2*Mj - 5*Ms - 67.6));
+    saturn_added_long += -0.229 * cos(radians(2*Mj - 4*Ms - 2));
+    saturn_added_long += 0.119 * sin(radians(Mj - 2*Ms - 3));
+    saturn_added_long += 0.046 * sin(radians(2*Mj - 6*Ms - 69));
+    saturn_added_long += 0.014 * sin(radians(Mj - 3*Ms + 32));
+
+    saturnOE->setLong(saturnOE->getLong()+saturn_added_long);
+
+    saturn_added_lat += -0.020 * cos(radians(2*Mj - 4*Ms - 2));
+    saturn_added_lat += 0.018 * sin(radians(2*Mj - 6*Ms - 49));
+
+    saturnOE->setLat(saturnOE->getLat()+saturn_added_lat);
+
+    uranus_added_long += 0.040 * sin(radians(Ms - 2*Mu + 6));
+    uranus_added_long += 0.035 * sin(radians(Ms - 3*Mu + 33));
+    uranus_added_long += -0.015 * sin(radians(Mj - Mu + 20));
+
+    uranusOE->setLong(uranusOE->getLong()+uranus_added_long);
 
 }
-void Planets::saturnPertubations(){
-
-}
-void Planets::uranusPertubations(){
-
-} 
 OrbitalElements Planets::computeMercuryOE(double day){
     double asc_node = 48.3313 + (3.24587E-5*day);
     double incl = 7.0047 + (5.00E-8*day);
