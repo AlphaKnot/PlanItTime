@@ -67,11 +67,11 @@ void OrbitalElements::computeCoordinatesEarth(){
     true_anomaly = rev(true_anomaly);
     
     m_long = true_anomaly+m_arg;
-    m_long = degrees(m_long);
-    m_long = rev(m_long);
 
-    m_eclip_x = -radius*cos(m_long);
-    m_eclip_y = -radius*sin(m_long);
+    m_long = rev(m_long-180);
+
+    m_eclip_x = radius*cos(radians(m_long));
+    m_eclip_y = radius*sin(radians(m_long));
     m_eclip_z = 0;
 
     m_lat = 0;    
