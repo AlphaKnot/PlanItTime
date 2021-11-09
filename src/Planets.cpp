@@ -14,6 +14,7 @@ void Planets::computePositions(double day){
 
     OrbitalElements mercuryOE = computeMercuryOE(day);
     OrbitalElements venusOE = computeVenusOE(day);
+    OrbitalElements earthOE = computeEarthOE(day);
     OrbitalElements marsOE = computeMarsOE(day);
     OrbitalElements jupiterOE = computeJupiterOE(day);
     OrbitalElements saturnOE = computeSaturnOE(day);
@@ -24,11 +25,16 @@ void Planets::computePositions(double day){
 
     planets.push_back(mercuryOE);
     planets.push_back(venusOE);
+    planets.push_back(earthOE);
     planets.push_back(marsOE);
     planets.push_back(jupiterOE);
     planets.push_back(saturnOE);
     planets.push_back(uranusOE);
     planets.push_back(neptuneOE);
+
+    for (int i = 0; i < planets.size(); i++){
+        planets.at(i).print();
+    }
 
 }
 void Planets::pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE, OrbitalElements* uranusOE){
@@ -93,6 +99,17 @@ OrbitalElements Planets::computeVenusOE(double day){
     double mean_anon = 48.0052+(1.6021302244*day);
 
     return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+}
+OrbitalElements Planets::computeEarthOE(double day){
+    double asc_node = 0;
+    double incl = 0;
+    double arg = 282.9404 + (4.70935E-5*day);
+    double axis = 1;
+    double eccen = 0.016709 - (1.151E-9*day);
+    double mean_anon = 356.047 + (0.9856002585*day);
+
+    return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
+
 }
 OrbitalElements Planets::computeMarsOE(double day){
     double asc_node = 49.5574 + (2.11081E-5*day);
