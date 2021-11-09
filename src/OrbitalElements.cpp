@@ -92,9 +92,6 @@ double OrbitalElements::computeEccentricAnomaly(int itr){
     }
     return current;
 }
-void OrbitalElements::print(std::string planetName){
-    std::cout << planetName << " "<< m_long << " " << m_eclip_x << " " << m_eclip_y << " " << m_eclip_z << "\n";
-}
 void OrbitalElements::updateEclipCoords(){
     double lat = radians(m_lat);
     double lon = radians(m_long);

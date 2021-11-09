@@ -6,14 +6,12 @@ class OrbitalElements{
     public:
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon);
         void updateEclipCoords();
-        void print(std::string);
         double getLong();
         double getLat();
         double getRad();
         double getEclipX();
         double getEclipY();
         double getEclipZ();
-
         double getMeanAnom();
 
         void setLong(double longtitude);
