@@ -56,7 +56,7 @@ void Planets::jupiterPertubations(){
 
     double Mj = jupiterOE -> getMeanAnom();
     double Ms = saturnOE -> getMeanAnom();
-    /**
+    
     added_long += -0.332 * sin(radians(2*Mj - 5*Ms - 67.6));
     added_long += -0.056 * sin(radians(2*Mj - 2*Ms + 21));
     added_long += +0.042 * sin(radians(3*Mj - 5*Ms + 21));
@@ -64,7 +64,7 @@ void Planets::jupiterPertubations(){
     added_long += +0.022 * cos(radians(Mj - Ms));
     added_long += +0.023 * sin(radians(2*Mj - 3*Ms + 52));
     added_long += -0.016 * sin(radians(Mj - 5*Ms - 69));
-    */
+    
 
 
 }
@@ -148,3 +148,7 @@ void Planets::computeNeptuneOE(double day){
 
     neptuneOE = new OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon);
 }
+double Planets::radians(double x){
+    return x*PI/180;
+}
+

@@ -2,6 +2,7 @@
 #define SOLARSYSTEM_H
 #include<vector>
 #include"Planets.h"
+#include"OrbitalElements.h"
 class SolarSystem{
     public:
         SolarSystem(int year,int month,int day,int hour,int minute);
@@ -12,6 +13,7 @@ class SolarSystem{
         double current_day;
         Planets* planets;
         double computeCurrentDay(int year, int month, int day, int hour, int minute);
+        std::vector<OrbitalElements*> planetData;
 };
 
 

@@ -7,10 +7,6 @@ class OrbitalElements{
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon);
         
         void printOrbitalElements(std::string planetName);
-
-        double radians(double x);
-        double rev(double x);
-        double degrees(double x);
         
         double getLong();
         double getLat();
@@ -39,6 +35,10 @@ class OrbitalElements{
 
         void computeCoordinates();
         double computeEccentricAnomaly(int itr);
+
+        double radians(double x);
+        double rev(double x);
+        double degrees(double x);
         
 };
 
