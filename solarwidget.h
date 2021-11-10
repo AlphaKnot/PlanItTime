@@ -18,10 +18,6 @@ private slots:
 private:
     QDateTime time_check;
     std::vector<OrbitalElements> planets;
-    double year;
-    double month;
-    double day;
-
 
 signals:
 
