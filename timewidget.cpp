@@ -2,10 +2,10 @@
 #include<QTimer>
 #include<QTime>
 #include<QFontDatabase>
-#include<iostream>
 #include<QDir>
 #include<QDate>
 #include<string>
+
 TimeWidget::TimeWidget(QWidget *parent) : QWidget(parent){
     int id = QFontDatabase::addApplicationFont(QDir::currentPath()+"/fonts/ARCADECLASSIC.TTF"); //set your working dir as your actual working dir not build dir
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
