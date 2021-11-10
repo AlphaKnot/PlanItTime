@@ -35,9 +35,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    ARCADECLASSIC.TTF \
-    ARCADECLASSIC.TTF \
-    Planet-test.pro.user \
     assets/sun.png \
     fonts/ARCADECLASSIC.TTF \
     fonts/ARCADECLASSIC.TTF
