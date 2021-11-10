@@ -3,8 +3,11 @@
 
 #include <QMainWindow>
 #include<QWidget>
-//#include"timewidget.h"
 #include"solarwidget.h"
+#include"timewidget.h"
+#include"alarmwidget.h"
+
+
 
 
 QT_BEGIN_NAMESPACE
@@ -21,8 +24,10 @@ public:
 
 private:
     Ui::UIScreen *ui;
-    //TimeWidget *tw;
+    TimeWidget *tw;
+    AlarmWidget *aw;
     SolarWidget *sw;
+
 
 };
 #endif // UISCREEN_H

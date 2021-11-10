@@ -1,7 +1,6 @@
-#ifndef SOLARWIDGET_H
-#define SOLARWIDGET_H
+#ifndef TIMEWIDGET_H
+#define TIMEWIDGET_H
 
-#include <QWidget>
 #include <QLabel>
 
 class TimeWidget : public QWidget
@@ -20,4 +19,4 @@ signals:
 
 };
 
-#endif // SOLARWIDGET_H
+#endif // TIMEWIDGET_H

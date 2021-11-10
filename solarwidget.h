@@ -14,8 +14,9 @@ public:
     explicit SolarWidget(QWidget *parent = nullptr);
 protected:
     void paintEvent(QPaintEvent *event);
+private slots:
+    void computePosition();
 private:
-    void initSystem();
     QLabel* sunLabel;
     Planets *p;
     std::vector<OrbitalElements> planets;

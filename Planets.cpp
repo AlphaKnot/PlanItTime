@@ -6,7 +6,6 @@
 
 Planets::Planets(double year, double month, double day, double hour, double minute){
     double curr_day = computeCurrentDay(year,month,day,hour,minute);
-    std::cout << curr_day << "\n";
     computePositions(curr_day);
 }
 std::vector<OrbitalElements> Planets::getPlanets(){
