@@ -162,7 +162,9 @@ OrbitalElements Planets::computeNeptuneOE(double day){
     return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,200);
 }
 double Planets::computeCurrentDay(double year, double month, double day, double hour, double minute){
-    return 367*year - 7 * ( year + (month+9)/12 ) / 4 - 3 * ( (year + (month-9)/7 ) / 100 + 1 ) / 4 + 275*month/9 + day - 730515;
+    double julian_day = ((367 * year - floor(7 * (year + floor((month + 9) / 12)) / 4)) + floor(275 * month / 9) + (day + 1721013.5));
+    julian_day = julian_day+hour/24.0 + minute/1440.0;
+    return julian_day - 2451543.5;
 }
 
 double Planets::radians(double x){

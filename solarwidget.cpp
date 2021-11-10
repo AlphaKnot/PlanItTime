@@ -1,21 +1,26 @@
-#include "solarwidget.h"
-#include <QRectF>
 #include<QPainter>
 #include<QDir>
-#include <iostream>
 #include<string>
 #include<QTimer>
+#include <QLabel>
+#include "solarwidget.h"
+#include "Planets.h"
 
 SolarWidget::SolarWidget(QWidget *parent) : QWidget(parent){
+    year = 2020;
+    month = 7;
+    day = 10;
+    time_check = time_check.currentDateTime().addYears(-1);
 
     QTimer *timer = new QTimer(this);
     connect(timer,&QTimer::timeout,this,&SolarWidget::computePosition);
-    timer->start(1000);
+    timer->start(1);
 
     computePosition();
     QWidget::update();
 
     resize(600,500);
+
 }
 void SolarWidget::paintEvent(QPaintEvent *event){
     QPainter painter(this);
@@ -29,34 +34,47 @@ void SolarWidget::computePosition(){
     QDateTime dateTime;
     dateTime = dateTime.currentDateTime();
 
-    p = new Planets(
-                dateTime.toString("yyyy").toDouble(),
-                dateTime.toString("MM").toDouble(),
-                dateTime.toString("dd").toDouble(),
-                dateTime.toString("H").toDouble(),
-                dateTime.toString("mm").toDouble()
-                );
+    if (dateTime.toString("yyyyMddhhmm").toDouble() > time_check.toString("yyyyMddhhmm").toDouble()){
 
-    planets = p->getPlanets();
-    std::string planetList[8] = {"mercury","venus","earth","mars","jupiter","saturn","uranus","neptune"};
+        // delete all prior labels
+        while (QWidget* w = findChild<QWidget*>()){
+            delete w;
+        }
 
-    for (int i = 0; i < planets.size(); i++){
+        // compute planets given time
+        Planets p = Planets(
+                    dateTime.toString("yyyy").toDouble(),
+                    dateTime.toString("MM").toDouble(),
+                    dateTime.toString("dd").toDouble(),
+                    dateTime.toString("H").toDouble(),
+                    dateTime.toString("mm").toDouble()
+                    );
 
-        QLabel *planet = new QLabel(this);
-        OrbitalElements current_planet = planets.at(i);
-        planet->setGeometry(current_planet.getEclipX()+200,(-current_planet.getEclipY())+200,20,20);
-        QPixmap pixmap = QPixmap(QDir::currentPath()+"/assets/"+QString::fromStdString(planetList[i])+".png");
-        planet->setPixmap(pixmap.scaled(20,20));
-        planet->show();
+        // set OrbitalElements vector
+        planets = p.getPlanets();
+        std::string planetList[8] = {"mercury","venus","earth","mars","jupiter","saturn","uranus","neptune"};
+
+        for (int i = 0; i < planets.size(); i++){
+            QLabel* planet = new QLabel(this);
+
+            OrbitalElements current_planet = planets.at(i);
+
+            planet->setGeometry(current_planet.getEclipX()+200,(-current_planet.getEclipY())+200,20,20);
+            QPixmap pixmap = QPixmap(QDir::currentPath()+"/assets/"+QString::fromStdString(planetList[i])+".png");
+            planet->setPixmap(pixmap.scaled(20,20));
+            planet->show();
+
+        }
+
+        QLabel* sunLabel = new QLabel(this);
+        sunLabel->setGeometry(200,200,24,24);
+        QPixmap pixmap = QPixmap(QDir::currentPath()+"/assets/sun.png");
+        sunLabel->setPixmap(pixmap.scaled(24,24));
+
+        sunLabel->show();
+        time_check = dateTime;
 
     }
-
-    sunLabel = new QLabel(this);
-    sunLabel->setGeometry(200,200,20,20);
-    QPixmap pixmap = QPixmap(QDir::currentPath()+"/assets/sun.png");
-    sunLabel->setPixmap(pixmap.scaled(20,20));
-
-    sunLabel->show();
 
 
 }

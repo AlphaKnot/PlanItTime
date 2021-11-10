@@ -2,9 +2,8 @@
 #define SOLARWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
 #include <vector>
-#include "Planets.h"
+#include<QDateTime>
 #include "OrbitalElements.h"
 
 class SolarWidget : public QWidget
@@ -17,9 +16,11 @@ protected:
 private slots:
     void computePosition();
 private:
-    QLabel* sunLabel;
-    Planets *p;
+    QDateTime time_check;
     std::vector<OrbitalElements> planets;
+    double year;
+    double month;
+    double day;
 
 
 signals:
