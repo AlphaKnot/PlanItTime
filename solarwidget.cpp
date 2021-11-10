@@ -7,9 +7,7 @@
 #include "Planets.h"
 
 SolarWidget::SolarWidget(QWidget *parent) : QWidget(parent){
-    year = 2020;
-    month = 7;
-    day = 10;
+
     time_check = time_check.currentDateTime().addYears(-1);
 
     QTimer *timer = new QTimer(this);
