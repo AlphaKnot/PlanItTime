@@ -7,8 +7,8 @@
 #include<string>
 
 TimeWidget::TimeWidget(QWidget *parent) : QWidget(parent){
-    int id = QFontDatabase::addApplicationFont(QDir::currentPath()+"/fonts/ARCADECLASSIC.TTF"); //set your working dir as your actual working dir not build dir
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+
+    QFontDatabase::addApplicationFont(QDir::currentPath()+"/fonts/ARCADECLASSIC.TTF"); //set your working dir as your actual working dir not build dir
 
 
     QPalette pal = QPalette();
@@ -18,7 +18,7 @@ TimeWidget::TimeWidget(QWidget *parent) : QWidget(parent){
     date_label = new QLabel(this);
 
 
-    time_label->setFont(QFont("arcadeclassic",100));
+    time_label->setFont(QFont("arcadeclassic",100)); // not case sensitive
     date_label->setFont(QFont("arcadeclassic",48));
 
     date_label->setGeometry(360,300,400,100);
