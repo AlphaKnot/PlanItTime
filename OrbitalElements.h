@@ -5,7 +5,6 @@ const double PI = 3.14159265359;
 class OrbitalElements{
     public:
         OrbitalElements(double asc_node, double incl, double arg, double axis, double eccen, double mean_anon, double radius);
-        void updateEclipCoords();
         double getLong();
         double getLat();
         double getRad();
@@ -37,6 +36,7 @@ class OrbitalElements{
 
         void computeCoordinates();
         void computeCoordinatesEarth();
+        void updateEclipCoords();
         double computeEccentricAnomaly(int itr);
 
         double radians(double x);

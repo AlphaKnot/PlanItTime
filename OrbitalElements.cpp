@@ -43,17 +43,15 @@ void OrbitalElements::computeCoordinates(){
 
 
     m_long = atan2(radians(m_eclip_y),radians(m_eclip_x));
-
     m_long = degrees(m_long);
     m_long = rev(m_long);
 
     m_lat = atan2(radians(m_eclip_z),radians(sqrt(pow(m_eclip_x,2) + pow(m_eclip_y,2))));
     m_lat = degrees(m_lat);
 
-    //m_radius = sqrt(pow(m_eclip_x,2)+pow(m_eclip_y,2)+pow(m_eclip_z,2));
     m_eclip_x = m_radius*cos(radians(m_long))*cos(radians(m_lat));
     m_eclip_y = m_radius*sin(radians(m_long))*cos(radians(m_lat));
-    //m_eclip_z = m_radius*sin(radians(m_lat));
+
 
 
 }
@@ -66,7 +64,6 @@ void OrbitalElements::computeCoordinatesEarth(){
     double rect_x = m_axis*(cos(radians(eccentric_anomaly))-m_eccen);
     double rect_y = m_axis*sqrt(1-m_eccen*m_eccen)*sin(radians(eccentric_anomaly));
 
-    //double radius = sqrt(pow(rect_x,2)+pow(rect_y,2));
     double true_anomaly = atan2(radians(rect_y),radians(rect_x));
 
     true_anomaly = degrees(true_anomaly);
@@ -123,9 +120,6 @@ double OrbitalElements::getEclipX(){
 }
 double OrbitalElements::getEclipY(){
     return m_eclip_y;
-}
-double OrbitalElements::getEclipZ(){
-    return m_eclip_z;
 }
 //setters
 void OrbitalElements::setLong(double longtitude){
