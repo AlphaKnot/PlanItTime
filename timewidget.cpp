@@ -5,6 +5,7 @@
 #include<QDir>
 #include<QDate>
 #include<string>
+#include<iostream>
 
 TimeWidget::TimeWidget(QWidget *parent) : QWidget(parent){
 
@@ -54,8 +55,9 @@ void TimeWidget::showTime(){
     QString time_text = time.toString("hh:mm");
 
     QDate date = QDate(curr_year,curr_month,curr_day);
+
     int day = date.dayOfWeek();
 
-    this->date_label->setText(QString::fromStdString(dateList[day]));
+    this->date_label->setText(QString::fromStdString(dateList[day-1]));
     this->time_label->setText(time_text);
 }
