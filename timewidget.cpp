@@ -34,7 +34,7 @@ TimeWidget::TimeWidget(QWidget *parent) : QWidget(parent){
     timer->start(1000);
 
     showTime();
-    resize(600,500);
+    resize(700,480);
 
 }
 void TimeWidget::showTime(){
