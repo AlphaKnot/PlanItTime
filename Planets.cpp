@@ -1,16 +1,38 @@
+/**
+ * @author Nathan Halsey
+ * @brief Takes in a date, computes planet positions, and returns a vector of orbital elements
+ *
+ */
+
 #include"Planets.h"
 #include<math.h>
 #include<iostream>
 #include<string>
 
-
+/**
+ * @brief Constructor
+ * @param year year of the day
+ * @param month month of the day
+ * @param day day of the day
+ * @param hour hour of the day
+ * @param minute minute of the day
+ */
 Planets::Planets(double year, double month, double day, double hour, double minute){
-    double curr_day = computeCurrentDay(year,month,day,hour,minute);
-    computePositions(curr_day);
+    double curr_day = computeCurrentDay(year,month,day,hour,minute); // compute the julian day
+    computePositions(curr_day); // call computePositions
 }
+/**
+ * @brief Get the vector of orbital elements
+ * @return a vector of all the planets orbital elements
+ */
 std::vector<OrbitalElements> Planets::getPlanets(){
     return planets;
 }
+/**
+ * @brief Compute the planets positions.
+ * Gets the orbital eleemnts of every planet, computes pertubations of jupiter,saturn,uranus, pushes the orbital elements to the vector
+ * @param day the julian day
+ */
 void Planets::computePositions(double day){
 
     OrbitalElements mercuryOE = computeMercuryOE(day);
@@ -34,9 +56,16 @@ void Planets::computePositions(double day){
     planets.push_back(neptuneOE);
 
 }
+/**
+ * @brief Computes the perturbations of jupiter, saturn and uranus.
+ * As they act on each other, they have pertubations, so we solve that here.
+ * @param jupiterOE Jupiter orbital elements
+ * @param saturnOE Saturn orbital elements
+ * @param uranusOE Uranus orbital elements
+ */
 void Planets::pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE, OrbitalElements* uranusOE){
 
-
+    // This whole function is essentially just a mathematical formula. Without knowing it, it can't be explained
     double jupiter_added_long = 0;
     double saturn_added_long = 0;
     double saturn_added_lat = 0;
@@ -76,6 +105,7 @@ void Planets::pertubations(OrbitalElements* jupiterOE, OrbitalElements* saturnOE
     uranusOE->setLong(uranusOE->getLong()+uranus_added_long);
 
 }
+// Hardcoded orbital element computations for every planet
 OrbitalElements Planets::computeMercuryOE(double day){
     double asc_node = 48.3313 + (3.24587E-5*day);
     double incl = 7.0047 + (5.00E-8*day);
@@ -161,12 +191,25 @@ OrbitalElements Planets::computeNeptuneOE(double day){
 
     return OrbitalElements(asc_node,incl,arg,axis,eccen,mean_anon,200);
 }
+/**
+ * @brief Computes the julian day given a date
+ * @param year year of the date
+ * @param month month of the date
+ * @param day day of the date
+ * @param hour hour of the date
+ * @param minute minute of the date
+ * @return the julian day
+ */
 double Planets::computeCurrentDay(double year, double month, double day, double hour, double minute){
     double julian_day = ((367 * year - floor(7 * (year + floor((month + 9) / 12)) / 4)) + floor(275 * month / 9) + (day + 1721013.5));
     julian_day = julian_day+hour/24.0 + minute/1440.0;
     return julian_day - 2451543.5;
 }
-
+/**
+ * @brief Convert from degrees to radians
+ * @param x a value in degrees
+ * @return a value in radians
+ */
 double Planets::radians(double x){
     return x*PI/180;
 }
