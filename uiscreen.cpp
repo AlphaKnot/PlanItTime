@@ -16,7 +16,7 @@ UIScreen::UIScreen(QWidget *parent)
     sw->setPalette(pal);
 
     ui->setupUi(this);
-    resize(700,480);
+    resize(640,480);
     setVisible(true);
     setWindowTitle(tr("PlanitTime"));
     this->setPalette(pal);
