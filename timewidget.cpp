@@ -13,7 +13,7 @@
 TimeWidget::TimeWidget(QWidget *parent) : QWidget(parent){
 
     // add the font
-    QFontDatabase::addApplicationFont(QDir::currentPath()+"/fonts/ARCADECLASSIC.TTF"); //set your working dir as your actual working dir not build dir
+    QFontDatabase::addApplicationFont(":/fonts/ARCADECLASSIC.TTF"); //set your working dir as your actual working dir not build dir
 
     // set the style
     QPalette pal = QPalette();

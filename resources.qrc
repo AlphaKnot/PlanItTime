@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fonts/ARCADECLASSIC.TTF</file>
+        <file>assets/asteroid.png</file>
+        <file>assets/earth.png</file>
+        <file>assets/jupiter.png</file>
+        <file>assets/mars.png</file>
+        <file>assets/mercury.png</file>
+        <file>assets/neptune.png</file>
+        <file>assets/saturn.png</file>
+        <file>assets/sun.png</file>
+        <file>assets/uranus.png</file>
+        <file>assets/venus.png</file>
+    </qresource>
+</RCC>

@@ -2,7 +2,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += app_bundle
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -35,7 +35,17 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Planet-test.pro.user \
-    assets/sun.png \
-    fonts/ARCADECLASSIC.TTF \
-    fonts/ARCADECLASSIC.TTF
+    plan-it-time.pro.user \
+
+
+RESOURCES += \
+    resources.qrc
+
+myImages.files = $$PWD/assets
+myImages.path = Contents/Resources
+myFont.files = $$PWD/fonts
+myFont.path = Contents/Resources
+
+
+
+

@@ -91,7 +91,6 @@ void AlarmWidget::addButtonClicked(){
     std::string minout;
     if(AM_PM_Box->currentText()!=QString("") && minute_box->currentText() !=QString("") && hour_box->currentText()!=QString("")){
         // Not checking for redudant times. X : XX
-        std::cout << Times.at(0) << std::endl;
 
 
         if(AM_PM_Box->currentText() == QString("PM")){
@@ -176,7 +175,7 @@ void AlarmWidget::readTimeSlots(std::string& name, QListWidget* alarmList){
                      }else{
                          if(afterNoon)finalString.append(parsedcsv[i] + " PM");
                          else{finalString.append(parsedcsv[i] + " AM");}
-                         std::cout << finalString << std::endl;
+
                          Times.push_back(finalString);
                           QListWidgetItem *temp = new QListWidgetItem((tr(finalString.c_str())));
                           temp->setTextAlignment(Qt::AlignCenter);

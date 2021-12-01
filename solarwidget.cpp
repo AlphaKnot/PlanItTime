@@ -72,7 +72,7 @@ void SolarWidget::computePosition(){
             OrbitalElements current_planet = planets.at(i);
 
             planet->setGeometry(current_planet.getEclipX()+200,(-current_planet.getEclipY())+200,20,20);
-            QPixmap pixmap = QPixmap(QDir::currentPath()+"/assets/"+QString::fromStdString(planetList[i])+".png");
+            QPixmap pixmap = QPixmap(":/assets/"+QString::fromStdString(planetList[i])+".png");
             planet->setPixmap(pixmap.scaled(20,20));
             planet->show();
 
@@ -80,7 +80,7 @@ void SolarWidget::computePosition(){
 
         QLabel* sunLabel = new QLabel(this);
         sunLabel->setGeometry(200,200,24,24);
-        QPixmap pixmap = QPixmap(QDir::currentPath()+"/assets/sun.png");
+        QPixmap pixmap = QPixmap(":/assets/sun.png");
         sunLabel->setPixmap(pixmap.scaled(24,24));
 
         sunLabel->show();
