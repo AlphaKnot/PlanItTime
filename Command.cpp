@@ -18,8 +18,10 @@ Command::Command() {
 string Command::getOutput() {
     return outputComm;
 }
-//Execute Method: It takes in an argument in the form of string and runs in through command line and returns the necessary
-//outputs
+/**
+* @brief: It takes in an argument in the form of string and runs in through command line and returns the necessary
+* outputs
+**/
 void Command::execute(string command) {
 
 
