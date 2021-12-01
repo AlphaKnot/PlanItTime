@@ -1,7 +1,10 @@
 #include "uiscreen.h"
 #include "ui_uiscreen.h"
 
-
+/**
+ * @brief UIScreen::UIScreen this represents the ui screen
+ * @param parent
+ */
 UIScreen::UIScreen(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::UIScreen)
@@ -9,6 +12,7 @@ UIScreen::UIScreen(QWidget *parent)
     QPalette pal = QPalette();
     pal.setColor(QPalette::Window, Qt::black);
 
+    // getting the widgets
     tw = new TimeWidget(this);
     tw->setPalette(pal);
 
