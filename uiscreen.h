@@ -21,6 +21,7 @@ class UIScreen : public QMainWindow
 public:
     UIScreen(QWidget *parent = nullptr);
     ~UIScreen();
+    void changeFace();
 
 private:
     Ui::UIScreen *ui;
