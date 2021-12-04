@@ -5,7 +5,11 @@ a.out
 Planet-test.pro
 Makefile
 <<<<<<< HEAD
+<<<<<<< HEAD
 .qmake.stash
 plan-it-time.app/*
 =======
 >>>>>>> 685aef1 (remove makefile)
+=======
+.qmake.stash
+>>>>>>> fba8a52 (remove qmake stash)
