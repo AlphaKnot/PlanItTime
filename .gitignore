@@ -3,3 +3,4 @@ a.out
 *.user
 .vscode
 Planet-test.pro
+Makefile
