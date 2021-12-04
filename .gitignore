@@ -4,5 +4,8 @@ a.out
 .vscode
 Planet-test.pro
 Makefile
+<<<<<<< HEAD
 .qmake.stash
 plan-it-time.app/*
+=======
+>>>>>>> 685aef1 (remove makefile)
