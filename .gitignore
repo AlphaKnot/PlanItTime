@@ -4,3 +4,4 @@ a.out
 .vscode
 Planet-test.pro
 Makefile
+.qmake.stash
