@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Plan-it-time
 
 ![Image of clock](solarview.png)
@@ -22,3 +23,8 @@ The aim of this project was to implement a software program which allows for the
 After encountering issues with getting the raspberry pi connected to wifi, we began working on implementing a mathematical method for computing the current positions of the planets. As a result, we essentially created a digital orrery, while retaining accuracy. 
 
 Plan It Time is a software based data visualizer that displays an accurate yet stylized representation of our solar system alongside the current date and time. It is built on top of sound mathematical methods for computing the positions of planets in the solar system and a GUI package which would implement upon C++ to provide a responsive UI. Plan It Time can display, at a glance, requested data visualizations of the planetary orbit positions, date and time, and function as a desktop clock with a built in alarm. 
+=======
+# A clock with some real time planets!
+
+![Image of clock](solarview.png)
+>>>>>>> 5976c63 (add picture)
