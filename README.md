@@ -39,10 +39,10 @@ Contributors (Which may or not be listed for one reason or another):
 
 | Contributor Name | Description |
 |------------------|-------------|
-| Ishaan Kumar     | Hardware expert, QA expert |
-| Jenessa Lu       | Front end (look and feel) design, asteroid logic |
-| Ammar Hussein    | Designed logic for alarm system, and integrated it with hardware  |
-| Nathan Halsey    | Designed solar widget and all of the associated logic |
+| Ishaan Kumar, [@gosnod](https://github.com/gosnod)    | Hardware expert, QA expert |
+| Jenessa Lu,  [@tsuyuuu](https://github.com/tsuyuuu)      | Front end (look and feel) design, asteroid logic |
+| Ammar Hussein, [@a1ges](https://github.com/a1ges)    | Designed logic for alarm system, and integrated it with hardware  |
+| Nathan Halsey [@natehalsey](https://github.com/natehalsey)   | Designed solar widget and all of the associated logic |
 
 
 
