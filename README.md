@@ -37,13 +37,13 @@ Plan It Time is a software based data visualizer that displays an accurate yet s
 
 Contributors (Which may or not be listed for one reason or another):
 
-*Ishaan Kumar* - **Hardware expert, QA expert,**
+| Contributor Name | Description |
+|------------------|-------------|
+| Ishaan Kumar     | Hardware expert, QA expert |
+| Jenessa Lu       | Front end (look and feel) design, asteroid logic |
+| Ammar Hussein    | Designed logic for alarm system, and integrated it with hardware  |
+| Nathan Halsey    | Designed solar widget and all of the associated logic |
 
-*Jenessa Lu* - **Front end (look and feel) design, asteroid logic,** 
-
-*Ammar Hussein* - **Designed logic for alarm system, and integrated it with hardware**
-
-*Nathan Halsey* - **Designed solar widget and all of the associated logic,**
 
 
 
