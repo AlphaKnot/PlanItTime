@@ -179,11 +179,18 @@ void AlarmWidget::readTimeSlots(std::string& name, QListWidget* alarmList){
                          }
                      }
 
+<<<<<<< HEAD
 
                     else{
                          finalString.append(parsedcsv[i]);
 
                         std::cout<< finalString << std::endl;
+=======
+                     }else{
+                         if(afterNoon)finalString.append(parsedcsv[i] + " PM");
+                         else{finalString.append(parsedcsv[i] + " AM");}
+
+>>>>>>> e71d80b (fixing resources)
                          Times.push_back(finalString);
                           QListWidgetItem *temp = new QListWidgetItem((tr(finalString.c_str())));
                           temp->setTextAlignment(Qt::AlignCenter);
