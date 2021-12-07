@@ -48,7 +48,7 @@ TimeWidget::TimeWidget(QWidget *parent) : QWidget(parent){
 /**
  * @brief TimeWidget::showTime this method gets the date and the time
  */
-void TimeWidget::showTime(){
+std::string TimeWidget::showTime(){
 
     std::string dateList[7] = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
 
@@ -71,4 +71,7 @@ void TimeWidget::showTime(){
     // setting the date and time
     this->date_label->setText(QString::fromStdString(dateList[day-1]));
     this->time_label->setText(time_text);
+    return time_text.toStdString();
 }
+
+

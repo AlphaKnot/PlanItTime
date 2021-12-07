@@ -25,6 +25,7 @@ public:
     void removeButtonClicked();
     void itemClicked();
     void delete_line(char* , int );
+    std::vector<std::string> getTimes();
 signals:
 
 private:

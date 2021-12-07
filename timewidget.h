@@ -8,9 +8,9 @@ class TimeWidget : public QWidget
     Q_OBJECT
 public:
     explicit TimeWidget(QWidget *parent = nullptr);
-
+    std::string showTime();
 private slots:
-     void showTime();
+
 private:
      QLabel *time_label;
      QLabel *date_label;

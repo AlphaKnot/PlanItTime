@@ -95,8 +95,15 @@ void AlarmWidget::addButtonClicked(){
 
         if(AM_PM_Box->currentText() == QString("PM")){
         QString newHour = hour_box->currentText();
+
         newstdhour = newHour.toInt();
+        if(newstdhour!=12){
         newstdhour+=12;
+        }
+        }
+        // edge case
+        else if(AM_PM_Box->currentText() == QString("AM") && hour_box->currentText() == "12"){
+        newstdhour = 0;
         }
         else newstdhour = hour_box->currentText().toInt();
         std::ofstream myfile;
@@ -119,19 +126,20 @@ void AlarmWidget::addButtonClicked(){
 }
 
 void AlarmWidget::removeButtonClicked(){
+    std::cout << "Deleteing" << std::endl;
     char filename[14] = "alarmTime.csv";
     std::string filenamestdString = "alarmTime.csv";
 
     int lineNumber = alarmList->currentRow();
-    if(lineNumber!=0 && lineNumber<=0 ){
+    if(lineNumber!=0){
     alarmList->removeItemWidget(alarmList->selectedItems().at(0));
     delete_line(filename, lineNumber-1);
     readTimeSlots(filenamestdString, alarmList);
-
-
-
-}
-
+    }
+    if(lineNumber==0){
+        //refresh list
+        readTimeSlots(filenamestdString, alarmList);
+    }
 
 }
 
@@ -158,24 +166,24 @@ void AlarmWidget::readTimeSlots(std::string& name, QListWidget* alarmList){
     while(getline(myfile,line)){
         std::string finalString = "";
          std::vector<std::string> parsedcsv;
-         bool afterNoon = false;
          boost::split(parsedcsv, line, boost::is_any_of(","));
          for (int i = 0; i < parsedcsv.size(); i++){
                      if(i%2 ==0){
                          int hour = std::stoi( parsedcsv[i] );
-                         if(hour >= 13){
-                             afterNoon=true;
-                             hour = hour %12 ;
-                             finalString.append(std::to_string(hour)+" : ");
-                         }else{
-                             afterNoon=false;
-                             finalString.append(std::to_string(hour)+" : ");
+                         hour = hour % 24;
+                         if(hour == 0){
+                             finalString.append("00:");
                          }
+                         else{
+                             finalString.append(std::to_string(hour)+ ":");
+                         }
+                     }
 
-                     }else{
-                         if(afterNoon)finalString.append(parsedcsv[i] + " PM");
-                         else{finalString.append(parsedcsv[i] + " AM");}
 
+                    else{
+                         finalString.append(parsedcsv[i]);
+
+                        std::cout<< finalString << std::endl;
                          Times.push_back(finalString);
                           QListWidgetItem *temp = new QListWidgetItem((tr(finalString.c_str())));
                           temp->setTextAlignment(Qt::AlignCenter);
@@ -203,13 +211,14 @@ void AlarmWidget::delete_line(char* file_name, int n)
    int line_no = 0;
    while (is.get(c))
    {
-       // if a newline character
-       if (c == '\n')
-       line_no++;
-
        // file content not to be deleted
        if (line_no != n)
            ofs << c;
+       // if a newline character
+       if (c == '\n')
+        line_no++;
+
+
    }
 
    // closing output file
@@ -226,4 +235,8 @@ void AlarmWidget::delete_line(char* file_name, int n)
 
 }
 // helper method to check if CSV database file exists.
+
+std::vector<std::string> AlarmWidget::getTimes(){
+    return Times;
+}
 

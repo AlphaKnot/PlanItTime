@@ -6,7 +6,14 @@
 #include"solarwidget.h"
 #include"timewidget.h"
 #include"alarmwidget.h"
+<<<<<<< HEAD
 
+=======
+#include"asteroidwidget.h"
+#include <QKeyEvent>
+#include <QTimer>
+#include <QtMultimedia/QMediaPlayer>
+>>>>>>> 2b9f061 (Final Product)
 
 
 
@@ -21,13 +28,22 @@ class UIScreen : public QMainWindow
 public:
     UIScreen(QWidget *parent = nullptr);
     ~UIScreen();
-    void changeFace();
+
 
 private:
+    //void changeFace(bool& facevalue, TimeWidget*, SolarWidget*, AlarmWidget* );
+   void keyPressEvent(QKeyEvent *event);
+   void SoundAlarm();
+    void alarmCheck();
     Ui::UIScreen *ui;
     TimeWidget *tw;
     AlarmWidget *aw;
     SolarWidget *sw;
+<<<<<<< HEAD
+=======
+    AsteroidWidget *asw;
+    bool facevalue;
+>>>>>>> 2b9f061 (Final Product)
 
 
 };
