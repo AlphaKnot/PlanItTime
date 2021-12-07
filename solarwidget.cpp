@@ -85,23 +85,6 @@ void SolarWidget::computePosition(){
 
         sunLabel->show();
 
-
-        // this code is resposible for animating the asteroid
-        // get the graphics
-        QLabel* asteroidLabelI = new QLabel(this);
-        asteroidLabelI->setGeometry(200,200, 50, 50);
-        QPixmap pixmapp = QPixmap(QDir::currentPath()+"/assets/asteroid.png");
-        asteroidLabelI->setPixmap(pixmapp.scaled(25,25));
-
-        // creates the animation
-        QPropertyAnimation *animationI = new QPropertyAnimation(asteroidLabelI, "geometry");
-        animationI->setDuration(10000);
-        animationI->setLoopCount(-1);
-        animationI->setStartValue(QRect(0, 0, 400, 200));
-        animationI->setKeyValueAt(1,QRect(rand()% 200 , rand() % 200, 500, 200));
-        animationI->setEndValue(QRect(250, 250, 200, 200));
-        animationI->start();
-
         time_check = dateTime;
 
     }

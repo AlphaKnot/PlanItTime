@@ -14,23 +14,19 @@ UIScreen::UIScreen(QWidget *parent)
     tw->setPalette(pal);
     sw = new SolarWidget(this);
     sw->setPalette(pal);
-    AlarmWidget* aw = new AlarmWidget(this);
-    aw->hide();
-<<<<<<< HEAD
-=======
+    aw = new AlarmWidget(this);
     asw = new AsteroidWidget(this);
+
+
     std::string current_time = tw->showTime();
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &UIScreen::alarmCheck);
     timer->start(60000);
-<<<<<<< HEAD
->>>>>>> 2b9f061 (Final Product)
-=======
->>>>>>> 2b9f061 (Final Product)
     ui->setupUi(this);
     resize(700,480);
     setVisible(true);
     setWindowTitle(tr("PlanitTime"));
+    aw->hide();
     this->setPalette(pal);
 
 }
@@ -57,27 +53,24 @@ void UIScreen::SoundAlarm(){
 }
 void UIScreen::keyPressEvent(QKeyEvent *event)
 {
-
     if (event->key() == Qt::Key_Return) {
 
-            if(facevalue== true){
-            aw->show();
+        if (facevalue== true) {
             sw->hide();
-            tw->hide();
             asw->hide();
+            tw->hide();
+            aw->show();
             facevalue = false;
-            }
-            else{
-                sw->show();
-                aw->hide();
-                tw->show();
-                asw->show();
-                facevalue = true;
-            }
 
+        } else {
+            sw->show();
+            asw->show();
+            tw->show();
+            aw->hide();;
+            facevalue = true;
         }
     }
-
+}
 UIScreen::~UIScreen()
 {
     delete ui;

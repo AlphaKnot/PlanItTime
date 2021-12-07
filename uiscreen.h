@@ -6,20 +6,10 @@
 #include"solarwidget.h"
 #include"timewidget.h"
 #include"alarmwidget.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-=======
->>>>>>> 2b9f061 (Final Product)
 #include"asteroidwidget.h"
 #include <QKeyEvent>
 #include <QTimer>
-#include <QtMultimedia/QMediaPlayer>
-<<<<<<< HEAD
->>>>>>> 2b9f061 (Final Product)
-=======
->>>>>>> 2b9f061 (Final Product)
+
 
 
 
@@ -45,14 +35,9 @@ private:
     TimeWidget *tw;
     AlarmWidget *aw;
     SolarWidget *sw;
-<<<<<<< HEAD
-=======
     AsteroidWidget *asw;
     bool facevalue;
-<<<<<<< HEAD
->>>>>>> 2b9f061 (Final Product)
-=======
->>>>>>> 2b9f061 (Final Product)
+
 
 
 };
