@@ -5,4 +5,4 @@ a.out
 Planet-test.pro
 Makefile
 .qmake.stash
-plan-it-time.app
+plan-it-time.app/*
