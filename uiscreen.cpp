@@ -23,6 +23,9 @@ UIScreen::UIScreen(QWidget *parent)
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &UIScreen::alarmCheck);
     timer->start(60000);
+<<<<<<< HEAD
+>>>>>>> 2b9f061 (Final Product)
+=======
 >>>>>>> 2b9f061 (Final Product)
     ui->setupUi(this);
     resize(700,480);
