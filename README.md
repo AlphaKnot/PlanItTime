@@ -3,7 +3,7 @@
 ![Image of clock](solarview.png)
 
 
-Contributors (Which may or not be listed for one reason or another):
+Contributors:
 
 | Contributor Name | Description |
 |------------------|-------------|
